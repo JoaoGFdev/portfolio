@@ -84,10 +84,17 @@ export const experienceRouter = createTRPCRouter({
         language: language,
       }),
     )
-    .query(({ ctx, input }) => {
+    .query(async ({ ctx, input }) => {
       const { language } = input
 
       return ctx.db.experience.findMany({
+        where: {
+          experienceTranslation: {
+            some: {
+              language,
+            },
+          },
+        },
         include: {
           skills: {
             orderBy: {
