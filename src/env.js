@@ -1,5 +1,5 @@
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { createEnv } from "@t3-oss/env-nextjs"
+import { z } from "zod"
 
 export const env = createEnv({
   /**
@@ -7,12 +7,8 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z
-      .string()
-      .refine(
-        (str) => !str.includes("YOUR_MYSQL_URL_HERE"),
-        "You forgot to change the default URL"
-      ),
+    DATABASE_URL: z.string(),
+    DIRECT_URL: z.string(),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -33,6 +29,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
+    DIRECT_URL: process.env.DIRECT_URL,
     NODE_ENV: process.env.NODE_ENV,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
@@ -46,4 +43,4 @@ export const env = createEnv({
    * `SOME_VAR: z.string()` and `SOME_VAR=''` will throw an error.
    */
   emptyStringAsUndefined: true,
-});
+})

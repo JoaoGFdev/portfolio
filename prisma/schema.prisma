@@ -2,19 +2,68 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
+    provider        = "prisma-client-js"
+    previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
+enum EmploymentType {
+    FULL_TIME
+    PART_TIME
+    CONTRACT
+    INTERNSHIP
+    FREELANCE
+}
+
+enum LocationType {
+    REMOTE
+    ONSITE
+    HYBRID
+}
+
+model Experience {
+    id        Int       @id @default(autoincrement())
+    startDate DateTime
+    endDate   DateTime?
+
+    employmentType EmploymentType
+    locationType   LocationType
+
+    skills                Skill[]
+    experienceTranslation ExperienceTranslation[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+enum Language {
+    EN
+    PT
+}
+
+model ExperienceTranslation {
+    id          Int    @id @default(autoincrement())
+    title       String
+    description String
+    companyName String
+    location    String
+
+    language Language
+
+    experience   Experience? @relation(fields: [experienceId], references: [id])
+    experienceId Int?
+}
+
+model Skill {
+    id   Int    @id @default(autoincrement())
+    name String @unique
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    @@index([name])
+    experiences Experience[]
 }
