@@ -7,6 +7,7 @@ import { TRPCReactProvider } from "~/trpc/react"
 import { ClerkProvider } from "@clerk/nextjs"
 import { useTheme } from "next-themes"
 import { dark } from "@clerk/themes"
+import { Analytics } from "@vercel/analytics/react"
 // import { ptBR } from "@clerk/localizations"
 
 export function Provider({ children }: PropsWithChildren) {
@@ -20,6 +21,7 @@ export function Provider({ children }: PropsWithChildren) {
       <Clerk>
         <TRPCReactProvider>{children}</TRPCReactProvider>
         <Toaster />
+        <Analytics />
       </Clerk>
     </ThemeProvider>
   )
