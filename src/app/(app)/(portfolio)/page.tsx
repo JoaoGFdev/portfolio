@@ -16,8 +16,8 @@ function Info() {
         Hello, I&apos;m João Guilherme Fonseca
       </h1>
       <p className="w-2/3 text-center text-lg font-light md:text-2xl">
-        I&apos;m a software developer based in Brazil and I&apos;m passionate
-        about building web applications.
+        As a software developer based in Brazil, my passion lies in building web
+        applications.
       </p>
     </div>
   )

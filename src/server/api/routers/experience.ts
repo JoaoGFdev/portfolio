@@ -1,55 +1,11 @@
-import {
-  type EmploymentType,
-  type LocationType,
-  type Language,
-} from "@prisma/client"
 import { z } from "zod"
+import { createExperienceSchema, language } from "~/schemas/experience.schema"
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc"
 
-const employmentType: z.ZodType<EmploymentType> = z.enum([
-  "FULL_TIME",
-  "PART_TIME",
-  "CONTRACT",
-  "INTERNSHIP",
-  "FREELANCE",
-])
-
-const locationType: z.ZodType<LocationType> = z.enum([
-  "REMOTE",
-  "HYBRID",
-  "ONSITE",
-])
-
-const language: z.ZodType<Language> = z.enum(["PT", "EN"])
-
-const createExperience = z.object({
-  language: z
-    .array(
-      z.object({
-        title: z.string(),
-        description: z.string(),
-        companyName: z.string(),
-        language: language,
-        location: z.object({
-          city: z.string(),
-          state: z.string(),
-          country: z.string(),
-        }),
-      }),
-    )
-    .min(1),
-  // Shared attributes
-  skills: z.array(z.string()),
-  employmentType: employmentType,
-  locationType: locationType,
-  startDate: z.date(),
-  endDate: z.date().optional(),
-})
-
 export const experienceRouter = createTRPCRouter({
   create: publicProcedure
-    .input(createExperience)
+    .input(createExperienceSchema)
     .mutation(async ({ ctx, input }) => {
       return ctx.db.experience.create({
         data: {
@@ -61,7 +17,7 @@ export const experienceRouter = createTRPCRouter({
                   description: description,
                   companyName: companyName,
                   language: language,
-                  location: `${location.city}, ${location.state}, ${location.country}`,
+                  location: location,
                 }),
               ),
             },

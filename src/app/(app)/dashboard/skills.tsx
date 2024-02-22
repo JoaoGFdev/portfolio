@@ -1,11 +1,9 @@
-"use client"
-
 import { useController, useFormContext } from "react-hook-form"
 
 import { SkillInput } from "~/components/skill-input"
 import { type EditVideoFormSchema } from "./form"
 
-export function VideoTagInput() {
+export function SkillsInput() {
   const { control } = useFormContext<EditVideoFormSchema>()
 
   const {

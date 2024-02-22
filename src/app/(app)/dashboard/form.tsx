@@ -6,7 +6,7 @@ import { z } from "zod"
 
 import { Label } from "~/components/ui/label"
 
-import { VideoTagInput } from "./skills"
+import { SkillsInput } from "./skills"
 import { toast } from "sonner"
 import { type Skill } from "@prisma/client"
 
@@ -47,7 +47,7 @@ export function VideoForm({ video }: VideoFormProps) {
       <form onSubmit={handleSubmit(handleSaveVideo)} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="commit">Tags</Label>
-          <VideoTagInput />
+          <SkillsInput />
         </div>
       </form>
     </FormProvider>
