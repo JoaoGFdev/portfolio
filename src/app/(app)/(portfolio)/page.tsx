@@ -8,7 +8,7 @@ export default async function HomePage() {
         <div className="flex gap-6">
           <Avatar className="static h-28 w-28 rounded-3xl md:h-48 md:w-48">
             <AvatarImage src="https://github.com/joaogf03.png" alt="@joaogf" />
-            <AvatarFallback className="font-anta rounded-3xl text-9xl">
+            <AvatarFallback className="font-anta rounded-3xl text-xl md:text-9xl">
               JG
             </AvatarFallback>
           </Avatar>
