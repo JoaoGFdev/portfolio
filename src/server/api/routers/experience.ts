@@ -32,6 +32,9 @@ export const experienceRouter = createTRPCRouter({
             })),
           },
         },
+        select: {
+          id: true,
+        },
       })
     }),
   getExperiences: publicProcedure

@@ -10,7 +10,7 @@ export async function Clerk() {
     <>
       <SignedOut>
         <SignInButton mode="modal" afterSignInUrl="/">
-          <Button variant="ghost">Entrar</Button>
+          <Button variant="ghost">Sign in</Button>
         </SignInButton>
       </SignedOut>
 

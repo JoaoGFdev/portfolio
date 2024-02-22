@@ -4,7 +4,7 @@ import {
   type Skill,
 } from "@prisma/client"
 import { Briefcase, Calendar, MapPin } from "lucide-react"
-import { employmentTypeMapPT } from "~/lib/utils"
+import { employmentTypeMapEN } from "~/lib/utils"
 import { api } from "~/trpc/server"
 import { CardContent, CardFooter, Card, CardTitle } from "~/components/ui/card"
 import { Badge } from "~/components/ui/badge"
@@ -12,7 +12,7 @@ import { formatDate } from "~/lib/date"
 
 export async function Experiences() {
   const experiences = await api.experience.getExperiences.query({
-    language: "PT",
+    language: "EN",
   })
 
   return (
@@ -48,7 +48,7 @@ function ExperienceCard({
           <div className="flex space-x-2 text-sm">
             <Briefcase className="h-4 w-4 flex-shrink-0" />
             <span>
-              {companyName} · {employmentTypeMapPT[employmentType]}
+              {companyName} · {employmentTypeMapEN[employmentType]}
             </span>
           </div>
           <div className="flex space-x-2 text-sm">
@@ -56,12 +56,7 @@ function ExperienceCard({
             <span>
               {formatDate(startDate, "MMM yyyy")}
               {" · "}
-              {endDate
-                ? new Date(endDate).toLocaleDateString("pt-BR", {
-                    month: "short",
-                    year: "numeric",
-                  })
-                : "Atualmente"}
+              {endDate ? formatDate(endDate, "MMM yyyy") : "Present"}
             </span>
           </div>
           <div className="flex space-x-2 text-sm">

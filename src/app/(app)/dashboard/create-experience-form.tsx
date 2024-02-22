@@ -30,6 +30,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
 import { Button } from "~/components/ui/button"
 
 export function CreateExperience() {
+  const utils = api.useUtils()
+
   const form = useForm<CreateExperienceSchema>({
     resolver: zodResolver(createExperienceSchema),
     defaultValues: {
@@ -37,11 +39,18 @@ export function CreateExperience() {
     },
   })
 
-  const { mutate } = api.experience.create.useMutation()
+  const { mutateAsync } = api.experience.create.useMutation()
 
   async function handleCreateExperience(data: CreateExperienceSchema) {
     try {
-      mutate(data)
+      await mutateAsync(data)
+
+      form.reset()
+      void utils.experience.getExperiences.invalidate()
+
+      toast("Experience created successfully!", {
+        description: `Experience has been created successfully.`,
+      })
     } catch {
       toast("Uh oh! Something went wrong.", {
         description: `An error ocurred while trying to create the experience.`,
@@ -49,17 +58,7 @@ export function CreateExperience() {
     }
   }
 
-  const {
-    handleSubmit,
-    register,
-    control,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
-  } = form
-
-  const { fields } = useFieldArray({
-    control,
-    name: "language",
-  })
+  const { handleSubmit, register, control } = form
 
   return (
     <FormProvider {...form}>
@@ -159,44 +158,6 @@ export function CreateExperience() {
           <SkillsInput />
         </div>
 
-        {/* <div>
-          {fields.map((field, index) => {
-            return (
-              <div key={field.id} className="flex flex-row flex-wrap gap-4">
-                <FormField
-                  control={control}
-                  name={`language.${index}.language`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Language</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...register(`language.${index}.language`)}
-                          defaultValue={field.value}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={control}
-                  name={`language.${index}.description`}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Description</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...register(`language.${index}.description`)}
-                          defaultValue={field.value}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
-                />
-              </div>
-            )
-          })}
-        </div> */}
         <Tabs defaultValue="PT" className="w-full">
           <TabsList>
             <TabsTrigger value="PT">Português</TabsTrigger>
@@ -344,7 +305,7 @@ export function CreateExperience() {
           </TabsContent>
         </Tabs>
 
-        <Button type="submit">Salvar</Button>
+        <Button type="submit">Save</Button>
       </form>
     </FormProvider>
   )

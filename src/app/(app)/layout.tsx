@@ -2,14 +2,20 @@ import { type PropsWithChildren } from "react"
 import { ToggleTheme } from "~/components/toggle-theme"
 import { Clerk } from "./clerk"
 import Link from "next/link"
+import { Button } from "~/components/ui/button"
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="flex flex-1 flex-col gap-4 px-8 py-4">
-      <header className="flex items-center justify-between">
+    <div className="flex flex-1 flex-col gap-4 font-sans antialiased">
+      <header className="sticky top-0 flex items-center justify-between bg-slate-100 p-2 dark:bg-slate-900">
         <div className="flex items-center">
           <Link href="/">
-            <h1 className="ml-2 text-2xl font-bold">Joaogf</h1>
+            <Button
+              className="font-anta pb-4 pt-3 text-3xl font-bold"
+              variant="ghost"
+            >
+              joaogf
+            </Button>
           </Link>
         </div>
 

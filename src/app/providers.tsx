@@ -7,7 +7,7 @@ import { TRPCReactProvider } from "~/trpc/react"
 import { ClerkProvider } from "@clerk/nextjs"
 import { useTheme } from "next-themes"
 import { dark } from "@clerk/themes"
-import { ptBR } from "@clerk/localizations"
+// import { ptBR } from "@clerk/localizations"
 
 export function Provider({ children }: PropsWithChildren) {
   return (
@@ -30,7 +30,7 @@ function Clerk({ children }: PropsWithChildren) {
 
   return (
     <ClerkProvider
-      localization={ptBR}
+      // localization={ptBR}
       appearance={{
         baseTheme: theme === "dark" ? dark : undefined,
       }}
