@@ -3,7 +3,7 @@ import "~/app/globals.css"
 import { Inter } from "next/font/google"
 import { cn } from "~/lib/utils"
 import { Provider } from "./providers"
-import { type PropsWithChildren } from "react"
+import type { PropsWithChildren } from "react"
 import localFont from "next/font/local"
 
 const inter = Inter({

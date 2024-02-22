@@ -1,6 +1,6 @@
 "use client"
 
-import { type PropsWithChildren } from "react"
+import type { PropsWithChildren } from "react"
 import { ThemeProvider } from "~/components/providers/theme-provide"
 import { Toaster } from "~/components/ui/sonner"
 import { TRPCReactProvider } from "~/trpc/react"

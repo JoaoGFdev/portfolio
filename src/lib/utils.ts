@@ -1,6 +1,7 @@
-import { type ClassValue, clsx } from "clsx"
+import { clsx } from "clsx"
+import type { ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { type LocationType, type EmploymentType } from "@prisma/client"
+import type { LocationType, EmploymentType } from "@prisma/client"
 import { currentUser } from "@clerk/nextjs"
 import { env } from "~/env"
 

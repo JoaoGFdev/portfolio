@@ -8,7 +8,7 @@ import { Label } from "~/components/ui/label"
 
 import { SkillsInput } from "./skills"
 import { toast } from "sonner"
-import { type Skill } from "@prisma/client"
+import type { Skill } from "@prisma/client"
 
 interface VideoFormProps {
   video: { skills: Skill[] }
