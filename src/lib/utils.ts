@@ -25,6 +25,10 @@ export const employmentTypeMapEN: EmploymentTypeMap = {
   INTERNSHIP: "Intern",
   FREELANCE: "Freelance",
   CONTRACT: "Contract",
+  APPRENTICESHIP: "Apprenticeship",
+  LEADERSHIP: "Leadership",
+  INDIRECT_CONTRACT: "Indirect contract",
+  VOLUNTEER: "Volunteer",
 } as const
 
 export const employmentTypeMapPT: EmploymentTypeMap = {
@@ -33,6 +37,10 @@ export const employmentTypeMapPT: EmploymentTypeMap = {
   INTERNSHIP: "Estágio",
   FREELANCE: "Freelance",
   CONTRACT: "Contrato",
+  APPRENTICESHIP: "Aprendiz",
+  LEADERSHIP: "Liderança",
+  INDIRECT_CONTRACT: "Contrato indireto",
+  VOLUNTEER: "Voluntário",
 } as const
 
 type LocationTypeMap = {

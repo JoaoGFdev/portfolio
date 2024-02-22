@@ -1,14 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { AlertCircle, Loader2 } from "lucide-react"
+import { Loader2 } from "lucide-react"
 import { z } from "zod"
 import { toast } from "sonner"
 
-import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
 import {
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -19,13 +17,9 @@ import { Label } from "./ui/label"
 import { api } from "~/trpc/react"
 
 const newSkillFormSchema = z.object({
-  name: z
-    .string({
-      required_error: "The skill name is required.",
-    })
-    .regex(/^[a-zA-Z]+(-[a-zA-Z]+)*$/, {
-      message: "Use only letters and hyphens.",
-    }),
+  name: z.string({
+    required_error: "The skill name is required.",
+  }),
 })
 
 type NewSkillFormSchema = z.infer<typeof newSkillFormSchema>

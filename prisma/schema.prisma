@@ -17,6 +17,10 @@ enum EmploymentType {
     CONTRACT
     INTERNSHIP
     FREELANCE
+    APPRENTICESHIP
+    LEADERSHIP
+    INDIRECT_CONTRACT
+    VOLUNTEER
 }
 
 enum LocationType {

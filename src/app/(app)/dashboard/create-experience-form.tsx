@@ -1,7 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { FormProvider, useFieldArray, useForm } from "react-hook-form"
+import { FormProvider, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { api } from "~/trpc/react"
 import { SkillsInput } from "./skills"
@@ -38,18 +38,22 @@ export function CreateExperience() {
       language: [{ language: "PT" }, { language: "EN" }],
     },
   })
+  const { handleSubmit, register, control, reset } = form
 
-  const { mutateAsync } = api.experience.create.useMutation()
+  const { mutate } = api.experience.create.useMutation()
 
   async function handleCreateExperience(data: CreateExperienceSchema) {
     try {
-      await mutateAsync(data)
+      mutate(data, {
+        onSuccess: () => {
+          reset()
 
-      form.reset()
-      void utils.experience.getExperiences.invalidate()
+          void utils.experience.getExperiences.invalidate()
 
-      toast("Experience created successfully!", {
-        description: `Experience has been created successfully.`,
+          toast("Experience created successfully!", {
+            description: `Experience has been created successfully.`,
+          })
+        },
       })
     } catch {
       toast("Uh oh! Something went wrong.", {
@@ -57,8 +61,6 @@ export function CreateExperience() {
       })
     }
   }
-
-  const { handleSubmit, register, control } = form
 
   return (
     <FormProvider {...form}>
