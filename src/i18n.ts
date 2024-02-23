@@ -14,9 +14,15 @@ export default getRequestConfig(async ({ locale }) => {
 
 export type Locale = (typeof locales)[number]
 
-export type LocaleParams = {
+export type LocaleLayout = {
   params: {
     locale: Locale
   }
   children: React.ReactNode
+}
+
+export type LocalePage = {
+  params: {
+    locale: Locale
+  }
 }

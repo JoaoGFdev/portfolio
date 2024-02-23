@@ -4,7 +4,7 @@ import { Inter } from "next/font/google"
 import { cn } from "~/lib/utils"
 import { Provider } from "./providers"
 import localFont from "next/font/local"
-import { type LocaleParams } from "~/i18n"
+import { locales, type LocaleLayout } from "~/i18n"
 import { unstable_setRequestLocale } from "next-intl/server"
 import { Header } from "./(app)/header"
 
@@ -25,10 +25,14 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
 
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }))
+}
+
 export default function RootLayout({
   children,
   params: { locale },
-}: LocaleParams) {
+}: LocaleLayout) {
   unstable_setRequestLocale(locale)
 
   return (

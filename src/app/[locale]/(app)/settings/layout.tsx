@@ -2,7 +2,7 @@ import { redirect } from "next/navigation"
 import { checkUser } from "~/lib/utils"
 import { Separator } from "~/components/ui/separator"
 import { SidebarNav } from "./sidebar-nav"
-import type { LocaleParams } from "~/i18n"
+import type { LocaleLayout } from "~/i18n"
 import { unstable_setRequestLocale } from "next-intl/server"
 
 export const metadata = {
@@ -13,7 +13,7 @@ export const metadata = {
 export default async function SettingsLayout({
   children,
   params: { locale },
-}: LocaleParams) {
+}: LocaleLayout) {
   unstable_setRequestLocale(locale)
 
   const sidebarNavItems = [

@@ -1,10 +1,10 @@
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { Experiences } from "./experiences"
 import { useTranslations } from "next-intl"
-import type { LocaleParams } from "~/i18n"
+import type { LocalePage } from "~/i18n"
 import { unstable_setRequestLocale } from "next-intl/server"
 
-export default function HomePage({ params: { locale } }: LocaleParams) {
+export default function HomePage({ params: { locale } }: LocalePage) {
   unstable_setRequestLocale(locale)
 
   const t = useTranslations("portfolio")
