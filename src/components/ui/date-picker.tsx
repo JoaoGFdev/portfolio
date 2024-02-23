@@ -11,18 +11,21 @@ import { cn } from "~/lib/utils"
 import { format, parse } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { Input } from "~/components/ui/input"
-// import { ptBR } from "date-fns/locale"
+import { useLocale } from "next-intl"
+import { ptBR } from "date-fns/locale"
 
 interface Props {
   initialDate?: Date
   onChange?: (date: Date) => void
 }
 
-const options = {
-  // locale: ptBR,
-}
-
 export function DatePicker({ initialDate, onChange }: Props) {
+  const locale = useLocale()
+
+  const options = {
+    locale: locale === "pt" ? ptBR : undefined,
+  }
+
   const [date, setDate] = useState<Date | undefined>(initialDate)
   const [stringDate, setStringDate] = useState(
     initialDate ? format(initialDate, "PPP", options) : "",
@@ -30,7 +33,7 @@ export function DatePicker({ initialDate, onChange }: Props) {
 
   return (
     <Popover key={date?.getDate()}>
-      <div className="relative w-full md:w-72">
+      <div className="relative w-full">
         <Input
           type="string"
           placeholder="__/__/____"
@@ -67,8 +70,8 @@ export function DatePicker({ initialDate, onChange }: Props) {
       </div>
       <PopoverContent align="end" className="w-auto p-0">
         <Calendar
-          // locale={ptBR}
-          // lang="pt-BR"
+          locale={locale === "pt" ? ptBR : undefined}
+          lang={locale === "pt" ? "pt-BR" : undefined}
           mode="single"
           captionLayout="dropdown-buttons"
           selected={date}

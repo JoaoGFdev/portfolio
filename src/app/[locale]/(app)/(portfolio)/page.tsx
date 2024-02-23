@@ -2,8 +2,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { Experiences } from "./experiences"
 import { useTranslations } from "next-intl"
 import type { LocaleParams } from "~/i18n"
+import { unstable_setRequestLocale } from "next-intl/server"
 
 export default function HomePage({ params: { locale } }: LocaleParams) {
+  unstable_setRequestLocale(locale)
+
   const t = useTranslations("portfolio")
 
   return (
@@ -30,14 +33,7 @@ export default function HomePage({ params: { locale } }: LocaleParams) {
         </div>
       </div>
 
-      <div className="flex flex-col space-y-4 md:space-y-12">
-        <div className="flex w-full items-end space-x-2">
-          <h2 className="font-anta text-4xl md:text-6xl">{t("experience")}</h2>
-          <div className="mb-4 h-px w-full bg-gradient-to-r from-slate-600 md:mb-6" />
-        </div>
-
-        <Experiences locale={locale} />
-      </div>
+      <Experiences />
     </div>
   )
 }

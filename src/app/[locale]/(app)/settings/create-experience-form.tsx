@@ -25,7 +25,6 @@ import {
   SelectValue,
 } from "~/components/ui/select"
 import { employmentTypeMapEN, locationTypeMapEN } from "~/lib/utils"
-import { Label } from "~/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
 import { Button } from "~/components/ui/button"
 
@@ -66,9 +65,9 @@ export function CreateExperience() {
     <FormProvider {...form}>
       <form
         onSubmit={handleSubmit(handleCreateExperience)}
-        className="space-y-4"
+        className="space-y-6"
       >
-        <div className="flex flex-row flex-wrap gap-4">
+        <div className="flex space-x-4">
           <FormField
             control={control}
             name="startDate"
@@ -94,19 +93,19 @@ export function CreateExperience() {
             )}
           />
         </div>
-        <div className="flex flex-row flex-wrap gap-4">
+        <div className="flex space-x-4">
           <FormField
             control={form.control}
             name="employmentType"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem>
                 <FormLabel>Employment Type </FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger className="md:w-72">
+                    <SelectTrigger>
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
                   </FormControl>
@@ -128,14 +127,14 @@ export function CreateExperience() {
             control={form.control}
             name="locationType"
             render={({ field }) => (
-              <FormItem className="w-full">
+              <FormItem>
                 <FormLabel>Location Type </FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger className="md:w-72">
+                    <SelectTrigger>
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
                   </FormControl>
@@ -155,18 +154,18 @@ export function CreateExperience() {
           />
         </div>
 
-        <div className="space-y-2">
-          <Label>Skills</Label>
-          <SkillsInput />
-        </div>
+        <Tabs defaultValue="PT">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 pb-4">
+            <TabsList>
+              <TabsTrigger value="PT">Português</TabsTrigger>
+              <TabsTrigger value="EN">English</TabsTrigger>
+            </TabsList>
 
-        <Tabs defaultValue="PT" className="w-full">
-          <TabsList>
-            <TabsTrigger value="PT">Português</TabsTrigger>
-            <TabsTrigger value="EN">English</TabsTrigger>
-          </TabsList>
-          <TabsContent value="PT" className="mt-2 flex flex-col gap-4">
-            <div className="flex flex-row flex-wrap gap-4">
+            <SkillsInput />
+          </div>
+
+          <TabsContent value="PT" className="mt-2 flex flex-col space-y-6">
+            <div className="flex space-x-4">
               <FormField
                 control={control}
                 name="language.0.title"
@@ -175,7 +174,6 @@ export function CreateExperience() {
                     <FormLabel>Title</FormLabel>
                     <FormControl>
                       <Input
-                        className="md:w-72"
                         {...register("language.0.title")}
                         defaultValue={field.value}
                       />
@@ -191,7 +189,6 @@ export function CreateExperience() {
                     <FormLabel>Description</FormLabel>
                     <FormControl>
                       <Input
-                        className="md:w-72"
                         {...register("language.0.description")}
                         defaultValue={field.value}
                       />
@@ -200,7 +197,7 @@ export function CreateExperience() {
                 )}
               />
             </div>
-            <div className="flex flex-row flex-wrap gap-4">
+            <div className="flex space-x-4">
               <FormField
                 control={control}
                 name="language.0.companyName"
@@ -209,7 +206,6 @@ export function CreateExperience() {
                     <FormLabel>Company</FormLabel>
                     <FormControl>
                       <Input
-                        className="md:w-72"
                         {...register("language.0.companyName")}
                         defaultValue={field.value}
                       />
@@ -225,7 +221,6 @@ export function CreateExperience() {
                     <FormLabel>Location</FormLabel>
                     <FormControl>
                       <Input
-                        className="md:w-72"
                         {...register("language.0.location")}
                         defaultValue={field.value}
                       />
@@ -235,8 +230,9 @@ export function CreateExperience() {
               />
             </div>
           </TabsContent>
-          <TabsContent value="EN" className="mt-0 flex flex-col gap-4">
-            <div className="flex flex-row flex-wrap gap-4">
+
+          <TabsContent value="EN" className="mt-0 flex flex-col space-y-6">
+            <div className="flex space-x-4">
               <FormField
                 control={control}
                 name="language.1.title"
@@ -245,7 +241,6 @@ export function CreateExperience() {
                     <FormLabel>Title</FormLabel>
                     <FormControl>
                       <Input
-                        className="md:w-72"
                         {...register("language.1.title")}
                         defaultValue={field.value}
                       />
@@ -261,7 +256,6 @@ export function CreateExperience() {
                     <FormLabel>Description</FormLabel>
                     <FormControl>
                       <Input
-                        className="md:w-72"
                         {...register("language.1.description")}
                         defaultValue={field.value}
                       />
@@ -270,7 +264,7 @@ export function CreateExperience() {
                 )}
               />
             </div>
-            <div className="flex flex-row flex-wrap gap-4">
+            <div className="flex space-x-4">
               <FormField
                 control={control}
                 name="language.1.companyName"
@@ -279,7 +273,6 @@ export function CreateExperience() {
                     <FormLabel>Company</FormLabel>
                     <FormControl>
                       <Input
-                        className="md:w-72"
                         {...register("language.1.companyName")}
                         defaultValue={field.value}
                       />
@@ -295,7 +288,6 @@ export function CreateExperience() {
                     <FormLabel>Location</FormLabel>
                     <FormControl>
                       <Input
-                        className="md:w-72"
                         {...register("language.1.location")}
                         defaultValue={field.value}
                       />
@@ -307,7 +299,9 @@ export function CreateExperience() {
           </TabsContent>
         </Tabs>
 
-        <Button type="submit">Save</Button>
+        <Button className="w-full sm:w-44" type="submit">
+          Save
+        </Button>
       </form>
     </FormProvider>
   )

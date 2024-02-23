@@ -14,6 +14,7 @@ export function Logo() {
     <Link
       href="/"
       className={cn(
+        "-ml-4",
         path === "/en" || path === "/pt"
           ? isSignedIn
             ? "pointer-events-none"
@@ -30,7 +31,7 @@ export function Logo() {
       }}
     >
       <Button
-        className="pb-4 pt-3 font-anta text-3xl font-bold"
+        className="pb-2 pt-1 font-anta text-xl font-bold lg:pb-4 lg:pt-3 lg:text-3xl"
         variant="ghost"
       >
         joaogf

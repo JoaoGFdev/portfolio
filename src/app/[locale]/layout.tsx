@@ -4,6 +4,9 @@ import { Inter } from "next/font/google"
 import { cn } from "~/lib/utils"
 import { Provider } from "./providers"
 import localFont from "next/font/local"
+import { type LocaleParams } from "~/i18n"
+import { unstable_setRequestLocale } from "next-intl/server"
+import { Header } from "./(app)/header"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,23 +28,25 @@ export const metadata = {
 export default function RootLayout({
   children,
   params: { locale },
-}: {
-  children: React.ReactNode
-  params: { locale: string }
-}) {
+}: LocaleParams) {
+  unstable_setRequestLocale(locale)
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
         className={cn(
-          "flex min-h-screen",
-          "bg-slate-100 dark:bg-slate-900",
-          "selection:bg-slate-300 dark:selection:bg-slate-700",
+          "flex min-h-screen flex-col",
+          "bg-slate-50 dark:bg-slate-950",
+          "selection:bg-zinc-200 dark:selection:bg-zinc-700",
           "font-sans antialiased",
           anta.variable,
           inter.variable,
         )}
       >
-        <Provider>{children}</Provider>
+        <Provider>
+          <Header />
+          {children}
+        </Provider>
       </body>
     </html>
   )

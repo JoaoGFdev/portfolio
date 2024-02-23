@@ -71,9 +71,11 @@ export function SkillInput({
             data-error={!!error}
             variant="outline"
             size="sm"
-            className="flex h-8 items-center border-dashed px-2 data-[error=true]:border-red-400 data-[error=true]:bg-red-50"
+            className="flex h-8 items-center justify-start overflow-hidden border-dashed px-2 data-[error=true]:border-red-400 data-[error=true]:bg-red-50"
           >
-            <Tag className="mr-2 h-3 w-3" />
+            <div className="mr-2 h-3 w-3">
+              <Tag size={12} />
+            </div>
             <span className="text-xs">Skills</span>
 
             {!!error && (
@@ -86,7 +88,7 @@ export function SkillInput({
                 <div className="flex gap-1">
                   {value.length > previewSkillsAmount ? (
                     <Badge
-                      variant="secondary"
+                      variant="default"
                       className="pointer-events-none text-nowrap rounded-sm px-1 font-normal"
                     >
                       {value.length} selected
