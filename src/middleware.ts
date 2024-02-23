@@ -15,9 +15,8 @@ export default authMiddleware({
   afterAuth() {
     return NextResponse.next()
   },
-  publicRoutes: ["/", "/pt", "/:locale/sign-in"],
 })
 
 export const config = {
-  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(en|pt)/(api|trpc)(.*)"],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(en|pt)/(api|trpc)(.*)"],
 }
