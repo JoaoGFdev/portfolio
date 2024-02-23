@@ -8,7 +8,8 @@ import { ClerkProvider } from "@clerk/nextjs"
 import { useTheme } from "next-themes"
 import { dark } from "@clerk/themes"
 import { Analytics } from "@vercel/analytics/react"
-// import { ptBR } from "@clerk/localizations"
+import { ptBR } from "@clerk/localizations"
+import { useLocale } from "next-intl"
 
 export function Provider({ children }: PropsWithChildren) {
   return (
@@ -28,11 +29,12 @@ export function Provider({ children }: PropsWithChildren) {
 }
 
 function Clerk({ children }: PropsWithChildren) {
+  const locale = useLocale()
   const { theme } = useTheme()
 
   return (
     <ClerkProvider
-      // localization={ptBR}
+      localization={locale === "pt" ? ptBR : undefined}
       appearance={{
         baseTheme: theme === "dark" ? dark : undefined,
       }}

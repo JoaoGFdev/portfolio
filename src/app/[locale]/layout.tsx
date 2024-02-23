@@ -3,7 +3,6 @@ import "~/app/globals.css"
 import { Inter } from "next/font/google"
 import { cn } from "~/lib/utils"
 import { Provider } from "./providers"
-import type { PropsWithChildren } from "react"
 import localFont from "next/font/local"
 
 const inter = Inter({
@@ -23,9 +22,15 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function RootLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode
+  params: { locale: string }
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={cn(
           "flex min-h-screen",

@@ -1,10 +1,11 @@
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
+import type { Locale } from "~/i18n"
 
 export const formatDate = (
   date: Date | number | string,
   type: string,
-  ptBr?: boolean,
+  locale?: Locale["locale"],
 ) => {
-  return format(date, type, ptBr ? { locale: ptBR } : {})
+  return format(date, type, locale === "pt" ? { locale: ptBR } : {})
 }

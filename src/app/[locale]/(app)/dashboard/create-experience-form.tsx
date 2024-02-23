@@ -24,7 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select"
-import { employmentTypeMapEN, locationTypeMapEn } from "~/lib/utils"
+import { employmentTypeMapEN, locationTypeMapEN } from "~/lib/utils"
 import { Label } from "~/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
 import { Button } from "~/components/ui/button"
@@ -140,11 +140,11 @@ export function CreateExperience() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {Object.keys(locationTypeMapEn).map((key) => {
+                    {Object.keys(locationTypeMapEN).map((key) => {
                       return (
                         <SelectItem key={key} value={key}>
                           {/* @ts-expect-error - it's fine */}
-                          {locationTypeMapEn[key]}
+                          {locationTypeMapEN[key]}
                         </SelectItem>
                       )
                     })}

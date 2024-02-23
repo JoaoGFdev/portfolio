@@ -27,6 +27,7 @@ export const skillRouter = createTRPCRouter({
         where: {
           name: {
             contains: search,
+            mode: "insensitive",
           },
         },
         take: take,

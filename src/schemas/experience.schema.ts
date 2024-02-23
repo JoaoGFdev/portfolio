@@ -15,6 +15,7 @@ export const employmentType: z.ZodType<EmploymentType> = z.enum([
   "LEADERSHIP",
   "INDIRECT_CONTRACT",
   "VOLUNTEER",
+  "WORK_SCHOLARSHIP",
 ])
 
 export const locationType: z.ZodType<LocationType> = z.enum([

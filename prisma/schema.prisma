@@ -21,6 +21,7 @@ enum EmploymentType {
     LEADERSHIP
     INDIRECT_CONTRACT
     VOLUNTEER
+    WORK_SCHOLARSHIP
 }
 
 enum LocationType {

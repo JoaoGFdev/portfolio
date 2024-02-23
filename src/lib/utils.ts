@@ -1,12 +1,20 @@
 import { clsx } from "clsx"
 import type { ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import type { LocationType, EmploymentType } from "@prisma/client"
+import type { LocationType, EmploymentType, Language } from "@prisma/client"
 import { currentUser } from "@clerk/nextjs"
 import { env } from "~/env"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+
+export function getLanguage(locale: "pt" | "en"): Language {
+  if (locale === "pt") return "PT"
+
+  if (locale === "en") return "EN"
+
+  return "EN"
 }
 
 export const checkUser = async () => {
@@ -29,6 +37,7 @@ export const employmentTypeMapEN: EmploymentTypeMap = {
   LEADERSHIP: "Leadership",
   INDIRECT_CONTRACT: "Indirect contract",
   VOLUNTEER: "Volunteer",
+  WORK_SCHOLARSHIP: "Work scholarship",
 } as const
 
 export const employmentTypeMapPT: EmploymentTypeMap = {
@@ -41,13 +50,14 @@ export const employmentTypeMapPT: EmploymentTypeMap = {
   LEADERSHIP: "Liderança",
   INDIRECT_CONTRACT: "Contrato indireto",
   VOLUNTEER: "Voluntário",
+  WORK_SCHOLARSHIP: "Bolsa de trabalho",
 } as const
 
 type LocationTypeMap = {
   [key in LocationType]: string
 }
 
-export const locationTypeMapEn: LocationTypeMap = {
+export const locationTypeMapEN: LocationTypeMap = {
   REMOTE: "Remote",
   ONSITE: "Onsite",
   HYBRID: "Hybrid",

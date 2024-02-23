@@ -11,7 +11,7 @@ export function ToggleTheme({ className }: { className?: string }) {
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       size="icon"
       className={className}
       onClick={(e) => {
