@@ -26,7 +26,7 @@ export const locationType: z.ZodType<LocationType> = z.enum([
 
 export const language: z.ZodType<Language> = z.enum(["PT", "EN"])
 
-export const createExperienceSchema = z.object({
+export const experienceSchema = z.object({
   language: z
     .array(
       z.object({
@@ -43,7 +43,7 @@ export const createExperienceSchema = z.object({
   employmentType: employmentType,
   locationType: locationType,
   startDate: z.date(),
-  endDate: z.date().optional(),
+  endDate: z.date().optional().nullable(),
 })
 
-export type CreateExperienceSchema = z.infer<typeof createExperienceSchema>
+export type ExperienceSchema = z.infer<typeof experienceSchema>

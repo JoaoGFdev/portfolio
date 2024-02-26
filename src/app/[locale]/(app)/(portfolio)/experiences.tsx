@@ -6,16 +6,21 @@ import {
   locationTypeMapEN,
   locationTypeMapPT,
   getLanguage,
+  checkUser,
 } from "~/lib/utils"
 import { api } from "~/trpc/server"
 import { Badge } from "~/components/ui/badge"
 import { formatDate } from "~/lib/date"
 import type { Locale } from "~/i18n"
 import { useTranslations, useLocale } from "next-intl"
+import Link from "next/link"
+import { Button } from "~/components/ui/button"
 
 export async function Experiences() {
   const locale = useLocale() as Locale
   const t = useTranslations("portfolio")
+
+  const isMe = await checkUser()
 
   const experiences = await api.experience.getExperiences.query({
     language: getLanguage(locale),
@@ -48,8 +53,19 @@ export async function Experiences() {
             return (
               <li key={id} className={cn(i !== 0 ? "py-12" : "pb-12")}>
                 <article>
-                  <div className="flex flex-col-reverse gap-y-4 lg:grid lg:grid-cols-7 lg:items-baseline lg:space-y-0">
-                    <div className="text-gray-500 dark:text-gray-400 lg:col-span-2">
+                  <div className="flex flex-col-reverse gap-x-4 gap-y-4 lg:grid lg:grid-cols-7">
+                    <div className="flex h-full flex-col space-y-1 text-gray-500 dark:text-gray-400 lg:col-span-2">
+                      {isMe && (
+                        <Link
+                          href={`/settings/experience?id=${id}`}
+                          className="w-full"
+                        >
+                          <Button variant="outline" className="w-full">
+                            Edit
+                          </Button>
+                        </Link>
+                      )}
+
                       <dl className="flex items-center space-x-2 ">
                         <Calendar size={16} />
                         <dt className="sr-only">
@@ -70,6 +86,7 @@ export async function Experiences() {
                             : t("present")}
                         </dd>
                       </dl>
+
                       <div className="flex items-center space-x-2">
                         <Briefcase size={16} />
                         <p>
@@ -82,6 +99,7 @@ export async function Experiences() {
                             : locationTypeMapPT[locationType]}
                         </p>
                       </div>
+
                       <div className="flex items-center space-x-2">
                         <MapPin size={16} />
                         <p>{location}</p>
@@ -93,7 +111,7 @@ export async function Experiences() {
                         {title} · {companyName}
                       </h2>
 
-                      <p>{description}</p>
+                      <p className="whitespace-pre-line">{description}</p>
 
                       {Boolean(skills.length) && (
                         <div className="flex flex-wrap gap-2">

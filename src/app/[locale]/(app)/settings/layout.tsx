@@ -7,7 +7,6 @@ import { unstable_setRequestLocale } from "next-intl/server"
 
 export const metadata = {
   title: "Joaogf - Settings",
-  description: "Settings of Joaogf's website",
 }
 
 export default async function SettingsLayout({
@@ -19,12 +18,12 @@ export default async function SettingsLayout({
   const sidebarNavItems = [
     {
       title: "Experience",
-      href: `/${locale}/settings`,
+      href: `/${locale}/settings/experience`,
     },
-    // {
-    //   title: "Skill",
-    //   href: `/${locale}/settings/skill`,
-    // },
+    {
+      title: "Skill",
+      href: `/${locale}/settings/skill`,
+    },
   ]
 
   const isMe = await checkUser()

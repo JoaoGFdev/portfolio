@@ -4,10 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { FormProvider, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { api } from "~/trpc/react"
-import { SkillsInput } from "./skills"
+import { SkillsInput } from "../skills"
 import {
-  type CreateExperienceSchema,
-  createExperienceSchema,
+  type ExperienceSchema,
+  experienceSchema,
 } from "~/schemas/experience.schema"
 import { Input } from "~/components/ui/input"
 import { DatePicker } from "~/components/ui/date-picker"
@@ -27,46 +27,75 @@ import {
 import { employmentTypeMapEN, locationTypeMapEN } from "~/lib/utils"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
 import { Button } from "~/components/ui/button"
+import { Textarea } from "~/components/ui/textarea"
+import type { RouterOutputs } from "~/trpc/shared"
 
-export function CreateExperience() {
+export function ExperienceForm({
+  experience,
+}: {
+  experience: RouterOutputs["experience"]["getExperience"]
+}) {
   const utils = api.useUtils()
 
-  const form = useForm<CreateExperienceSchema>({
-    resolver: zodResolver(createExperienceSchema),
-    defaultValues: {
-      language: [{ language: "PT" }, { language: "EN" }],
-    },
+  const form = useForm<ExperienceSchema>({
+    resolver: zodResolver(experienceSchema),
+    defaultValues: experience
+      ? {
+          language: experience.experienceTranslation,
+          startDate: experience.startDate,
+          endDate: experience.endDate,
+          employmentType: experience.employmentType,
+          locationType: experience.locationType,
+          skills: experience.skills.map((skill) => skill.name),
+        }
+      : { language: [{ language: "PT" }, { language: "EN" }] },
   })
+
+  console.log("🚀 ~ endDate:", form.watch("startDate"))
+
   const { handleSubmit, register, control, reset } = form
 
   const { mutate } = api.experience.create.useMutation()
+  const { mutate: update } = api.experience.update.useMutation()
 
-  async function handleCreateExperience(data: CreateExperienceSchema) {
+  async function handleForm(data: ExperienceSchema) {
     try {
-      mutate(data, {
-        onSuccess: () => {
-          reset()
+      if (experience)
+        update(
+          {
+            id: experience.id,
+            experience: data,
+          },
+          {
+            onSuccess: () => {
+              void utils.experience.getExperiences.invalidate()
 
-          void utils.experience.getExperiences.invalidate()
+              toast("Experience updated successfully!")
+            },
+          },
+        )
+      else
+        mutate(data, {
+          onSuccess: () => {
+            reset()
 
-          toast("Experience created successfully!", {
-            description: `Experience has been created successfully.`,
-          })
-        },
-      })
+            void utils.experience.getExperiences.invalidate()
+
+            toast("Experience created successfully!", {
+              description: `Experience has been created successfully.`,
+            })
+          },
+        })
     } catch {
       toast("Uh oh! Something went wrong.", {
-        description: `An error ocurred while trying to create the experience.`,
+        description: `An error ocurred, please try again.`,
       })
     }
   }
 
   return (
     <FormProvider {...form}>
-      <form
-        onSubmit={handleSubmit(handleCreateExperience)}
-        className="space-y-6"
-      >
+      <form onSubmit={handleSubmit(handleForm)} className="space-y-6">
         <div className="flex space-x-4">
           <FormField
             control={control}
@@ -75,7 +104,10 @@ export function CreateExperience() {
               <FormItem>
                 <FormLabel>Started date</FormLabel>
                 <FormControl>
-                  <DatePicker onChange={field.onChange} />
+                  <DatePicker
+                    initialDate={field.value}
+                    onChange={field.onChange}
+                  />
                 </FormControl>
               </FormItem>
             )}
@@ -87,7 +119,10 @@ export function CreateExperience() {
               <FormItem>
                 <FormLabel>End date</FormLabel>
                 <FormControl>
-                  <DatePicker onChange={field.onChange} />
+                  <DatePicker
+                    initialDate={field.value}
+                    onChange={field.onChange}
+                  />
                 </FormControl>
               </FormItem>
             )}
@@ -165,38 +200,36 @@ export function CreateExperience() {
           </div>
 
           <TabsContent value="PT" className="mt-2 flex flex-col space-y-6">
-            <div className="flex space-x-4">
-              <FormField
-                control={control}
-                name="language.0.title"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Title</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...register("language.0.title")}
-                        defaultValue={field.value}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={control}
-                name="language.0.description"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Description</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...register("language.0.description")}
-                        defaultValue={field.value}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-            </div>
+            <FormField
+              control={control}
+              name="language.0.title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Title</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...register("language.0.title")}
+                      defaultValue={field.value}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={control}
+              name="language.0.description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      {...register("language.0.description")}
+                      defaultValue={field.value}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
             <div className="flex space-x-4">
               <FormField
                 control={control}
@@ -232,38 +265,36 @@ export function CreateExperience() {
           </TabsContent>
 
           <TabsContent value="EN" className="mt-0 flex flex-col space-y-6">
-            <div className="flex space-x-4">
-              <FormField
-                control={control}
-                name="language.1.title"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Title</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...register("language.1.title")}
-                        defaultValue={field.value}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={control}
-                name="language.1.description"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Description</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...register("language.1.description")}
-                        defaultValue={field.value}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-            </div>
+            <FormField
+              control={control}
+              name="language.1.title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Title</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...register("language.1.title")}
+                      defaultValue={field.value}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={control}
+              name="language.1.description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      {...register("language.1.description")}
+                      defaultValue={field.value}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
             <div className="flex space-x-4">
               <FormField
                 control={control}

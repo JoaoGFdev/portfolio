@@ -1,11 +1,11 @@
 import { z } from "zod"
-import { createExperienceSchema, language } from "~/schemas/experience.schema"
+import { experienceSchema, language } from "~/schemas/experience.schema"
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc"
 
 export const experienceRouter = createTRPCRouter({
   create: publicProcedure
-    .input(createExperienceSchema)
+    .input(experienceSchema)
     .mutation(async ({ ctx, input }) => {
       return ctx.db.experience.create({
         data: {
@@ -34,6 +34,44 @@ export const experienceRouter = createTRPCRouter({
         },
         select: {
           id: true,
+        },
+      })
+    }),
+  update: publicProcedure
+    .input(
+      z.object({
+        id: z.number(),
+        experience: experienceSchema,
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { id, experience } = input
+
+      await ctx.db.experienceTranslation.deleteMany({
+        where: {
+          experienceId: id,
+        },
+      })
+
+      return ctx.db.experience.update({
+        where: {
+          id,
+        },
+        data: {
+          experienceTranslation: {
+            createMany: {
+              data: experience.language,
+            },
+          },
+          startDate: experience.startDate,
+          endDate: experience.endDate,
+          employmentType: experience.employmentType,
+          locationType: experience.locationType,
+          skills: {
+            set: experience.skills.map((name) => ({
+              name,
+            })),
+          },
         },
       })
     }),
@@ -68,6 +106,34 @@ export const experienceRouter = createTRPCRouter({
         },
         orderBy: {
           startDate: "desc",
+        },
+      })
+    }),
+  getExperience: publicProcedure
+    .input(
+      z.object({
+        id: z
+          .string()
+          .optional()
+          .transform((id) => {
+            if (id === undefined) return null
+
+            return Number(id)
+          }),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      const { id } = input
+
+      if (id === null) return null
+
+      return ctx.db.experience.findUnique({
+        where: {
+          id,
+        },
+        include: {
+          skills: true,
+          experienceTranslation: true,
         },
       })
     }),

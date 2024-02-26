@@ -1,10 +1,10 @@
 import { useController, useFormContext } from "react-hook-form"
 
 import { SkillInput } from "~/components/skill-input"
-import type { CreateExperienceSchema } from "~/schemas/experience.schema"
+import type { ExperienceSchema } from "~/schemas/experience.schema"
 
 export function SkillsInput() {
-  const { control } = useFormContext<CreateExperienceSchema>()
+  const { control } = useFormContext<ExperienceSchema>()
 
   const {
     field,

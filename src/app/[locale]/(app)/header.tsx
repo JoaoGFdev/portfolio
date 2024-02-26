@@ -10,7 +10,7 @@ export async function Header() {
   const isMe = await checkUser()
 
   return (
-    <header className="sticky top-0 flex w-full border-b border-neutral-400 bg-slate-200 dark:border-slate-500 dark:bg-black">
+    <header className="sticky top-0 flex w-full border-b border-neutral-400 bg-white dark:border-slate-500 dark:bg-black">
       <div className="container flex py-2">
         <div className="flex items-center">
           <Logo />
@@ -24,7 +24,8 @@ export async function Header() {
                   <Button variant="link">Settings</Button>
                 </Link>
               )}
-              <UserButton afterSignOutUrl="/" />
+              {/* Send to refetch, which is doesn't exist, to force a new fetch, so the util 'checkUser' works */}
+              <UserButton afterSignOutUrl="/refetch" />
               <span className="w-1" />
             </SignedIn>
 

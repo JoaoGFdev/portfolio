@@ -30,10 +30,8 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
           href={item.href}
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            pathname === item.href
-              ? "bg-slate-50 dark:bg-slate-800"
-              : "hover:bg-transparent hover:underline dark:hover:bg-transparent",
-            "justify-start",
+            pathname === item.href && "bg-white dark:bg-slate-800",
+            "justify-start hover:bg-white dark:hover:bg-slate-800",
           )}
         >
           {item.title}

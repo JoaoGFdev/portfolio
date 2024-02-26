@@ -15,7 +15,7 @@ import { useLocale } from "next-intl"
 import { ptBR } from "date-fns/locale"
 
 interface Props {
-  initialDate?: Date
+  initialDate?: Date | null
   onChange?: (date: Date) => void
 }
 
@@ -26,7 +26,7 @@ export function DatePicker({ initialDate, onChange }: Props) {
     locale: locale === "pt" ? ptBR : undefined,
   }
 
-  const [date, setDate] = useState<Date | undefined>(initialDate)
+  const [date, setDate] = useState<Date | undefined>(initialDate ?? undefined)
   const [stringDate, setStringDate] = useState(
     initialDate ? format(initialDate, "PPP", options) : "",
   )
