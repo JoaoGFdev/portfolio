@@ -46,7 +46,10 @@ export async function Experiences() {
             experienceTranslation[0]!
 
           return (
-            <li key={id} className={cn(i !== 0 ? "py-12" : "pb-12")}>
+            <li
+              key={id}
+              className={cn(i !== 0 ? "py-6 md:py-10" : "pb-6 md:pb-10")}
+            >
               <article>
                 <div className="flex flex-col-reverse gap-x-4 gap-y-4 lg:grid lg:grid-cols-7">
                   <div className="flex h-full flex-col space-y-1 text-gray-500 dark:text-gray-400 lg:col-span-2">
@@ -102,7 +105,7 @@ export async function Experiences() {
                   </div>
 
                   <div className="space-y-4 lg:col-span-5">
-                    <h2 className="font-cal text-3xl font-bold leading-8 tracking-tight text-gray-900 dark:text-gray-100 md:text-4xl">
+                    <h2 className="font-cal text-2xl font-medium leading-8 tracking-tight text-gray-900 dark:text-gray-100 md:text-4xl">
                       {title} · {companyName}
                     </h2>
 

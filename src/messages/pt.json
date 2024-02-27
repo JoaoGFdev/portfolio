@@ -10,6 +10,11 @@
     "description": "Desenvolvedor Front End do Brasil. Apaixonado por desenvolvimento web e adoro criar sites bonitos e performáticos. Estou sempre em busca de novos desafios e oportunidades para aprender e crescer.",
     "article": "Com uma vasta experiência em desenvolvimento, sou especializado em React.js, Next.js, Expo e Node, fazendo uso de ferramentas e bibliotecas como TailwindCSS, shadcn/ui - Radix, TanStack, Zustand e Prisma. Tenho uma afinidade particular com TypeScript, valorizando sua capacidade de reforçar a robustez e a legibilidade do código. \n\nNo meu trabalho, busco consistentemente produzir código limpo e facilmente compreensível, refletindo meu compromisso com a excelência. Tenho um forte desejo de colaborar com equipes de desenvolvimento, contribuindo com soluções eficazes e participando ativamente de discussões e trocas de ideias.",
     "experience": "Experiência",
-    "present": "Atual"
+    "present": "Atual",
+    "education": {
+      "title": "Formação",
+      "date": "jan 2018 - dez 2023",
+      "description": "Bacharelado em Ciência da Computação"
+    }
   }
 }
