@@ -223,6 +223,7 @@ export function ExperienceForm({
                   <FormLabel>Description</FormLabel>
                   <FormControl>
                     <Textarea
+                      rows={4}
                       {...register("language.0.description")}
                       defaultValue={field.value}
                     />
@@ -288,6 +289,7 @@ export function ExperienceForm({
                   <FormLabel>Description</FormLabel>
                   <FormControl>
                     <Textarea
+                      rows={4}
                       {...register("language.1.description")}
                       defaultValue={field.value}
                     />

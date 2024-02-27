@@ -20,7 +20,7 @@ export async function Header() {
   const isMe = await checkUser()
 
   return (
-    <header className="sticky top-0 flex w-full border-b border-neutral-400 bg-white dark:border-slate-500 dark:bg-black">
+    <header className="sticky top-0 flex w-full border-b border-neutral-400 bg-white dark:border-slate-500 dark:bg-slate-950">
       <div className="container flex py-2">
         <div className="flex items-center">
           <Logo />

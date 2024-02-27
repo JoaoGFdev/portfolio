@@ -58,7 +58,7 @@ export default function RootLayout({
       <body
         className={cn(
           "flex min-h-screen flex-col",
-          "bg-white dark:bg-slate-950",
+          "bg-white dark:bg-slate-900",
           "selection:bg-zinc-200 dark:selection:bg-zinc-700",
           "font-sans antialiased",
           anta.variable,
