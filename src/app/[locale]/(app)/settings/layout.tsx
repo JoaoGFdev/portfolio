@@ -28,9 +28,7 @@ export default async function SettingsLayout({
 
   const isMe = await checkUser()
 
-  if (!isMe) {
-    redirect("/")
-  }
+  if (!isMe) redirect("/")
 
   return (
     <div className="space-y-6 py-8">

@@ -1,4 +1,11 @@
 {
+  "Metadata": {
+    "twitter": {
+      "title": "João Guilherme Fonseca | Front End Developer",
+      "description": "Front End Developer from Brazil. I'm passionate about web development and I love to create beautiful and performant websites. I'm always looking for new challenges and opportunities to learn and grow"
+    },
+    "description": "João Guilherme's portfolio, a software developer from Brazil."
+  },
   "portfolio": {
     "title": "My passion lies in building web applications, so let's build something together",
     "experience": "Experience",

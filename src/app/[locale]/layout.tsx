@@ -1,11 +1,11 @@
 import "~/app/globals.css"
 
 import { Inter } from "next/font/google"
+import { unstable_setRequestLocale, getTranslations } from "next-intl/server"
 import { cn } from "~/lib/utils"
 import { Provider } from "./providers"
 import localFont from "next/font/local"
-import { locales, type LocaleLayout } from "~/i18n"
-import { unstable_setRequestLocale } from "next-intl/server"
+import { locales, type LocaleLayout, type LocalePage } from "~/i18n"
 import { Header } from "./(app)/header"
 
 const inter = Inter({
@@ -19,10 +19,28 @@ const anta = localFont({
   display: "swap",
 })
 
-export const metadata = {
-  title: "Joaogf",
-  description: "João Guilherme's portfolio, a software engineer from Brazil.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+export async function generateMetadata({ params: { locale } }: LocalePage) {
+  const t = await getTranslations({ locale, namespace: "Metadata" })
+
+  return {
+    title: "Joaogf",
+    description: t("description"),
+    icons: [{ rel: "icon", url: "/favicon.ico" }],
+    keywords:
+      "frontend, front-end, backend, back-end, fullstack, web development, software engineering, programming, typescript, react, nextjs, tailwindcss, graphql, prisma, postgres, javascript, nodejs, software, technology, tech, portfolio, personal website, joaogf, joao guilherme fonseca, brasil",
+    lang: locale,
+    twitter: {
+      title: t("twitter.title"),
+      description: t("twitter.description"),
+      creator: "@joaogf_dev",
+    },
+    openGraph: {
+      type: "website",
+      url: "https://joaogf.dev/",
+      title: t("twitter.title"),
+      description: t("twitter.description"),
+    },
+  }
 }
 
 export function generateStaticParams() {
