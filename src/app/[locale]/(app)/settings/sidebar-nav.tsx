@@ -2,18 +2,24 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import type { Route } from "next"
 
 import { cn } from "~/lib/utils"
 import { buttonVariants } from "~/components/ui/button"
 
-interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
+interface SidebarNavProps<T extends string>
+  extends React.HTMLAttributes<HTMLElement> {
   items: {
-    href: string
+    href: Route<T> | URL
     title: string
   }[]
 }
 
-export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
+export function SidebarNav<T extends string>({
+  className,
+  items,
+  ...props
+}: SidebarNavProps<T>) {
   const pathname = usePathname()
 
   return (
@@ -24,13 +30,15 @@ export function SidebarNav({ className, items, ...props }: SidebarNavProps) {
       )}
       {...props}
     >
-      {items.map((item) => (
+      {items.map((item, i) => (
         <Link
-          key={item.href}
+          key={i}
+          // @ts-expect-error - `href` is a string
           href={item.href}
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            pathname === item.href && "bg-slate-100 dark:bg-slate-800",
+            pathname.includes(item.href.toString()) &&
+              "bg-slate-100 dark:bg-slate-800",
             "justify-start",
           )}
         >

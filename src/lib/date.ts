@@ -5,7 +5,7 @@ import type { Locale } from "~/i18n"
 export const formatDate = (
   date: Date | number | string,
   type: string,
-  locale?: Locale,
+  locale?: string,
 ) => {
   return format(date, type, locale === "pt" ? { locale: ptBR } : {})
 }

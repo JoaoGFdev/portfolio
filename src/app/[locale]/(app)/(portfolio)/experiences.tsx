@@ -6,22 +6,17 @@ import {
   locationTypeMapEN,
   locationTypeMapPT,
   getLanguage,
-  checkUser,
 } from "~/lib/utils"
 import { api } from "~/trpc/server"
 import { Badge } from "~/components/ui/badge"
 import { formatDate } from "~/lib/date"
 import type { Locale } from "~/i18n"
 import { useTranslations, useLocale } from "next-intl"
-import Link from "next/link"
-import { Button } from "~/components/ui/button"
 import { Skeleton } from "~/components/ui/skeleton"
 
 export async function Experiences() {
   const locale = useLocale() as Locale
   const t = useTranslations("portfolio")
-
-  const isMe = await checkUser()
 
   const experiences = await api.experience.getExperiences.query({
     language: getLanguage(locale),
@@ -53,17 +48,6 @@ export async function Experiences() {
               <article>
                 <div className="flex flex-col-reverse gap-x-4 gap-y-4 lg:grid lg:grid-cols-7">
                   <div className="flex h-full flex-col space-y-1 text-gray-500 dark:text-gray-400 lg:col-span-2">
-                    {isMe && (
-                      <Link
-                        href={`/settings/experience?id=${id}`}
-                        className="w-full"
-                      >
-                        <Button variant="outline" className="w-full">
-                          Edit
-                        </Button>
-                      </Link>
-                    )}
-
                     <dl className="flex items-center space-x-2 ">
                       <Calendar size={16} />
                       <dt className="sr-only">
@@ -79,9 +63,11 @@ export async function Experiences() {
                         Ended ${title} role at ${companyName} on
                       </dt>
                       <dd className="text-base font-medium leading-6 ">
-                        {endDate
-                          ? formatDate(endDate, "MMM yyyy", locale)
-                          : t("present")}
+                        <time dateTime={startDate.toISOString()}>
+                          {endDate
+                            ? formatDate(endDate, "MMM yyyy", locale)
+                            : t("present")}
+                        </time>
                       </dd>
                     </dl>
 

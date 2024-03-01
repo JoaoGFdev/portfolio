@@ -1,6 +1,6 @@
 import { Separator } from "~/components/ui/separator"
 
-export default async function Page() {
+export default async function SkillPage() {
   return (
     <div className="space-y-6">
       <div>

@@ -9,7 +9,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function getLanguage(locale: "pt" | "en"): Language {
+export function getLanguage(locale: string): Language {
   if (locale === "pt") return "PT"
 
   if (locale === "en") return "EN"

@@ -88,7 +88,7 @@ export function CreateNewSkillDialog({
         </div>
         <DialogFooter>
           <DialogTrigger asChild>
-            <Button type="button" variant="ghost">
+            <Button type="button" variant="outline">
               Cancel
             </Button>
           </DialogTrigger>

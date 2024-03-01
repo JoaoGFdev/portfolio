@@ -11,13 +11,7 @@ export default authMiddleware({
   beforeAuth: (req) => {
     return intlMiddleware(req)
   },
-  afterAuth(_, req) {
-    if (req.url.endsWith("/settings")) {
-      const url = req.nextUrl.clone()
-      url.pathname = url.pathname.replace("/settings", "/settings/experience")
-      return NextResponse.redirect(url)
-    }
-
+  afterAuth: () => {
     return NextResponse.next()
   },
 })

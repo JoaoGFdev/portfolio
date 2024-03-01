@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { FormProvider, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { api } from "~/trpc/react"
-import { SkillsInput } from "../skills"
+import { SkillsInput } from "./skills-input"
 import {
   type ExperienceSchema,
   experienceSchema,
@@ -26,22 +26,28 @@ import {
 } from "~/components/ui/select"
 import { employmentTypeMapEN, locationTypeMapEN } from "~/lib/utils"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
-import { Button } from "~/components/ui/button"
 import { Textarea } from "~/components/ui/textarea"
 import type { RouterOutputs } from "~/trpc/shared"
+import { useRouter } from "next/navigation"
+import { useLocale } from "next-intl"
 
 export function ExperienceForm({
   experience,
+  children,
 }: {
-  experience: RouterOutputs["experience"]["getExperience"]
+  experience?: RouterOutputs["experience"]["getExperience"]
+  children?: React.ReactNode
 }) {
-  const utils = api.useUtils()
+  const locale = useLocale()
+  const router = useRouter()
 
   const form = useForm<ExperienceSchema>({
     resolver: zodResolver(experienceSchema),
     defaultValues: experience
       ? {
-          language: experience.experienceTranslation,
+          language: experience.experienceTranslation.sort((a, b) =>
+            a.language === "PT" ? -1 : 1,
+          ),
           startDate: experience.startDate,
           endDate: experience.endDate,
           employmentType: experience.employmentType,
@@ -51,11 +57,9 @@ export function ExperienceForm({
       : { language: [{ language: "PT" }, { language: "EN" }] },
   })
 
-  console.log("🚀 ~ endDate:", form.watch("startDate"))
-
   const { handleSubmit, register, control, reset } = form
 
-  const { mutate } = api.experience.create.useMutation()
+  const { mutate: create } = api.experience.create.useMutation()
   const { mutate: update } = api.experience.update.useMutation()
 
   async function handleForm(data: ExperienceSchema) {
@@ -68,18 +72,16 @@ export function ExperienceForm({
           },
           {
             onSuccess: () => {
-              void utils.experience.getExperiences.invalidate()
-
               toast("Experience updated successfully!")
+
+              router.push(`/${locale}/settings/experience`)
             },
           },
         )
       else
-        mutate(data, {
+        create(data, {
           onSuccess: () => {
             reset()
-
-            void utils.experience.getExperiences.invalidate()
 
             toast("Experience created successfully!", {
               description: `Experience has been created successfully.`,
@@ -332,9 +334,7 @@ export function ExperienceForm({
           </TabsContent>
         </Tabs>
 
-        <Button className="w-full sm:w-44" type="submit">
-          Save
-        </Button>
+        <div className="flex w-full justify-end gap-4">{children}</div>
       </form>
     </FormProvider>
   )
