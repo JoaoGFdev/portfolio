@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation"
-import { checkUser } from "~/lib/utils"
 import { Separator } from "~/components/ui/separator"
 import { SidebarNav } from "./sidebar-nav"
 import type { LocaleLayout } from "~/i18n"
@@ -15,21 +13,6 @@ export default async function SettingsLayout({
 }: LocaleLayout) {
   unstable_setRequestLocale(locale)
 
-  const sidebarNavItems = [
-    {
-      title: "Experience",
-      href: `/${locale}/settings/experience`,
-    },
-    {
-      title: "Skill",
-      href: `/${locale}/settings/skill`,
-    },
-  ]
-
-  const isMe = await checkUser()
-
-  if (!isMe) redirect("/")
-
   return (
     <div className="space-y-6 py-8">
       <div className="space-y-0.5">
@@ -39,9 +22,20 @@ export default async function SettingsLayout({
       <Separator className="my-6" />
       <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
         <aside className="lg:w-1/5">
-          <SidebarNav items={sidebarNavItems} />
+          <SidebarNav
+            items={[
+              {
+                title: "Experience",
+                href: `/${locale}/settings/experience`,
+              },
+              {
+                title: "Skill",
+                href: `/${locale}/settings/skill`,
+              },
+            ]}
+          />
         </aside>
-        <div className="flex-1 lg:max-w-2xl">{children}</div>
+        <div className="flex-1">{children}</div>
       </div>
     </div>
   )

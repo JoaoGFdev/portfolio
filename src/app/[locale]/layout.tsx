@@ -3,7 +3,7 @@ import "~/app/globals.css"
 import { Inter } from "next/font/google"
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server"
 import { cn } from "~/lib/utils"
-import { Provider } from "./providers"
+import { Provider } from "~/components/providers"
 import localFont from "next/font/local"
 import { locales, type LocaleLayout, type LocalePage } from "~/i18n"
 import { Header } from "./(app)/header"
@@ -57,7 +57,7 @@ export default function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body
         className={cn(
-          "flex min-h-screen flex-col",
+          "flex min-h-screen flex-col overflow-y-scroll",
           "bg-white dark:bg-slate-900",
           "selection:bg-zinc-200 dark:selection:bg-zinc-700",
           "font-sans antialiased",

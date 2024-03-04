@@ -27,17 +27,23 @@ export const locationType: z.ZodType<LocationType> = z.enum([
 export const language: z.ZodType<Language> = z.enum(["PT", "EN"])
 
 export const experienceSchema = z.object({
-  language: z
-    .array(
-      z.object({
-        title: z.string(),
-        description: z.string(),
-        companyName: z.string(),
-        language: language,
-        location: z.string(),
+  language: z.array(
+    z.object({
+      title: z.string().min(1, {
+        message: "Required",
       }),
-    )
-    .min(1),
+      description: z.string().min(1, {
+        message: "Required",
+      }),
+      companyName: z.string().min(1, {
+        message: "Required",
+      }),
+      language: language,
+      location: z.string().min(1, {
+        message: "Required",
+      }),
+    }),
+  ),
   // Shared attributes
   skills: z.array(z.string()),
   employmentType: employmentType,

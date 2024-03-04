@@ -1,9 +1,13 @@
 import { z } from "zod"
 
-import { createTRPCRouter, publicProcedure } from "~/server/api/trpc"
+import {
+  createTRPCRouter,
+  publicProcedure,
+  protectedProcedure,
+} from "~/server/api/trpc"
 
 export const skillRouter = createTRPCRouter({
-  create: publicProcedure
+  create: protectedProcedure
     .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
       return ctx.db.skill.create({
@@ -12,7 +16,6 @@ export const skillRouter = createTRPCRouter({
         },
       })
     }),
-
   getSkills: publicProcedure
     .input(
       z.object({

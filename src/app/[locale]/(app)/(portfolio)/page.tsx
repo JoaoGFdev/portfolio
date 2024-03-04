@@ -5,7 +5,7 @@ import type { LocalePage } from "~/i18n"
 import { unstable_setRequestLocale } from "next-intl/server"
 import { Suspense } from "react"
 import { Button } from "~/components/ui/button"
-import { Briefcase, Calendar, Mail } from "lucide-react"
+import { Calendar, Mail, MapPin } from "lucide-react"
 
 export default function HomePage({ params: { locale } }: LocalePage) {
   unstable_setRequestLocale(locale)
@@ -48,7 +48,6 @@ export default function HomePage({ params: { locale } }: LocalePage) {
             </p>
           </div>
         </div>
-
         <p className="flex whitespace-pre-line md:hidden">{t("description")}</p>
       </div>
 
@@ -86,8 +85,8 @@ export default function HomePage({ params: { locale } }: LocalePage) {
                   </div>
 
                   <div className="flex h-6 items-center space-x-2">
-                    <Briefcase size={16} />
-                    <p>Universidade de Vila Velha - UVV</p>
+                    <MapPin size={16} />
+                    <p>{t("education.place")}</p>
                   </div>
                 </div>
 
@@ -96,15 +95,9 @@ export default function HomePage({ params: { locale } }: LocalePage) {
                     {t("education.description")}
                   </h2>
 
-                  {/* <p className="whitespace-pre-line">{description}</p>
-
-                    {Boolean(skills.length) && (
-                      <div className="flex flex-wrap gap-2">
-                        {skills.map((skill) => (
-                          <Badge key={skill.id}>{skill.name}</Badge>
-                        ))}
-                      </div>
-                    )} */}
+                  <p className="whitespace-pre-line">
+                    Universidade Vila Velha - UVV
+                  </p>
                 </div>
               </div>
             </article>

@@ -2,14 +2,14 @@ import { clsx } from "clsx"
 import type { ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 import type { LocationType, EmploymentType, Language } from "@prisma/client"
-import { currentUser } from "@clerk/nextjs"
+import { currentUser } from "@clerk/nextjs/server"
 import { env } from "~/env"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function getLanguage(locale: "pt" | "en"): Language {
+export function getLanguage(locale: string): Language {
   if (locale === "pt") return "PT"
 
   if (locale === "en") return "EN"
@@ -27,7 +27,7 @@ type EmploymentTypeMap = {
   [key in EmploymentType]: string
 }
 
-export const employmentTypeMapEN: EmploymentTypeMap = {
+export const employmentTypeMapEN = {
   FULL_TIME: "Full-time",
   PART_TIME: "Part-time",
   INTERNSHIP: "Intern",

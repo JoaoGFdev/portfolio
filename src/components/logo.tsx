@@ -1,41 +1,39 @@
 "use client"
-import { useSignIn, useSession } from "@clerk/nextjs"
+
+import { useSession, SignInButton } from "@clerk/nextjs"
+import { useLocale } from "next-intl"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "~/components/ui/button"
-import { cn } from "~/lib/utils"
+
+// Accepts all props from the SignInButton component
+function Btn({ ...props }) {
+  return (
+    <Button
+      className="-ml-4 pb-2 pt-1 font-anta text-xl font-bold lg:pb-4 lg:pt-3 lg:text-3xl"
+      variant="ghost"
+      {...props}
+    >
+      joaogf
+    </Button>
+  )
+}
 
 export function Logo() {
-  const { signIn } = useSignIn()
-  const { isSignedIn } = useSession()
+  const locale = useLocale()
+  const { isLoaded } = useSession()
   const path = usePathname()
 
+  if (path !== `/${locale}` || !isLoaded)
+    return (
+      <Link href={`/${locale}`}>
+        <Btn />
+      </Link>
+    )
+
   return (
-    <Link
-      href="/"
-      className={cn(
-        "-ml-4",
-        path === "/en" || path === "/pt"
-          ? isSignedIn
-            ? "pointer-events-none"
-            : "cursor-pointer"
-          : "cursor-pointer",
-      )}
-      onDoubleClick={() => {
-        !isSignedIn &&
-          void signIn?.authenticateWithRedirect({
-            strategy: "oauth_github",
-            redirectUrlComplete: "/",
-            redirectUrl: "/",
-          })
-      }}
-    >
-      <Button
-        className="pb-2 pt-1 font-anta text-xl font-bold lg:pb-4 lg:pt-3 lg:text-3xl"
-        variant="ghost"
-      >
-        joaogf
-      </Button>
-    </Link>
+    <SignInButton mode="modal">
+      <Btn />
+    </SignInButton>
   )
 }

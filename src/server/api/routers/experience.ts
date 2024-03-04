@@ -1,10 +1,14 @@
 import { z } from "zod"
 import { experienceSchema, language } from "~/schemas/experience.schema"
 
-import { createTRPCRouter, publicProcedure } from "~/server/api/trpc"
+import {
+  createTRPCRouter,
+  publicProcedure,
+  protectedProcedure,
+} from "~/server/api/trpc"
 
 export const experienceRouter = createTRPCRouter({
-  create: publicProcedure
+  create: protectedProcedure
     .input(experienceSchema)
     .mutation(async ({ ctx, input }) => {
       return ctx.db.experience.create({
@@ -37,7 +41,7 @@ export const experienceRouter = createTRPCRouter({
         },
       })
     }),
-  update: publicProcedure
+  update: protectedProcedure
     .input(
       z.object({
         id: z.number(),

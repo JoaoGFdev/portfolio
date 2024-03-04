@@ -12,9 +12,10 @@
     "experience": "Experiência",
     "present": "Atual",
     "education": {
-      "title": "Formação",
+      "title": "Formação Acadêmica",
       "date": "jan 2018 - dez 2023",
-      "description": "Bacharelado em Ciência da Computação"
+      "description": "Bacharelado em Ciência da Computação",
+      "place": "Vila Velha, ES, Brasil"
     }
   }
 }

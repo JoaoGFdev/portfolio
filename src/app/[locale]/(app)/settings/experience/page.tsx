@@ -1,26 +1,13 @@
-import { Separator } from "~/components/ui/separator"
-import { ExperienceForm } from "./experience-form"
-import { api } from "~/trpc/server"
+import { Suspense } from "react"
+import {
+  ExperienceCards,
+  LoadingExperienceCards,
+} from "./_components/experience-cards"
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams: Record<string, string | string[] | undefined>
-}) {
-  const experience = await api.experience.getExperience.query({
-    id: searchParams.id?.toString(),
-  })
-
+export default function ExperiencePage() {
   return (
-    <div className="space-y-6">
-      <div>
-        <h3 className="text-lg font-medium">Experience</h3>
-        <p className="text-muted-foreground text-sm">
-          This is where you can add your work experience
-        </p>
-      </div>
-      <Separator />
-      <ExperienceForm experience={experience} />
-    </div>
+    <Suspense fallback={<LoadingExperienceCards />}>
+      <ExperienceCards />
+    </Suspense>
   )
 }

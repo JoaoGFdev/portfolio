@@ -1,7 +1,7 @@
 import { SignedIn, UserButton } from "@clerk/nextjs"
 import Link from "next/link"
 import { Button, buttonVariants } from "~/components/ui/button"
-import { checkUser, cn } from "~/lib/utils"
+import { cn } from "~/lib/utils"
 import { Logo } from "../../../components/logo"
 import { ToggleTheme } from "~/components/toggle-theme"
 import {
@@ -15,10 +15,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover"
+import { useLocale } from "next-intl"
 
 export async function Header() {
-  const isMe = await checkUser()
-
+  const locale = useLocale()
   return (
     <header className="sticky top-0 flex w-full border-b border-neutral-400 bg-white dark:border-slate-500 dark:bg-slate-950">
       <div className="container flex py-2">
@@ -29,15 +29,12 @@ export async function Header() {
         <div className="flex flex-1 justify-end space-x-4">
           <MobileMenu />
           <nav className="hidden items-center space-x-1 sm:flex">
+            <Link href={`/${locale}/settings/experience`}>
+              <Button variant="link">Settings</Button>
+            </Link>
+
             <SignedIn>
-              {isMe && (
-                <Link href="/settings">
-                  <Button variant="link">Settings</Button>
-                </Link>
-              )}
-              {/* Send to refetch, which is doesn't exist, to force a new fetch, so the util 'checkUser' works */}
-              <UserButton afterSignOutUrl="/refetch" />
-              <span className="w-1" />
+              <UserButton afterSignOutUrl="/" />
             </SignedIn>
 
             <Link
@@ -77,8 +74,6 @@ export async function Header() {
 }
 
 export default async function MobileMenu() {
-  const isMe = await checkUser()
-
   return (
     <Popover>
       <PopoverTrigger className="block sm:hidden" asChild>
@@ -130,16 +125,13 @@ export default async function MobileMenu() {
           </div>
 
           <SignedIn>
-            {/* Send to refetch, which is doesn't exist, to force a new fetch, so the util 'checkUser' works */}
             <div className="pl-4">
-              <UserButton afterSignOutUrl="/refetch" />
+              <UserButton afterSignOutUrl="/" />
             </div>
-            {isMe && (
-              <Link href="/settings">
-                <Button variant="link">Settings</Button>
-              </Link>
-            )}
           </SignedIn>
+          <Link href="/settings">
+            <Button variant="link">Settings</Button>
+          </Link>
         </nav>
       </PopoverContent>
     </Popover>
