@@ -24,6 +24,7 @@ export function ToggleLocale() {
 
     const href = pathname.replace(`/${locale}`, `/${l}`)
 
+    // @ts-expect-error - it's fine
     router.replace(href)
   }
 

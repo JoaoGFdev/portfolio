@@ -47,7 +47,7 @@ export function SkillInput({
   const {
     data,
     isLoading: isLoadingSkillOptions,
-    isInitialLoading: isPendingSkillOptions,
+    isFetching: isPendingSkillOptions,
   } = api.skill.getSkills.useQuery({
     search: searchTerm,
   })
@@ -89,7 +89,7 @@ export function SkillInput({
                   {value.length > previewSkillsAmount ? (
                     <Badge
                       variant="default"
-                      className="pointer-events-none text-nowrap rounded-sm px-1 font-normal"
+                      className="pointer-events-none text-nowrap rounded px-1 font-normal"
                     >
                       {value.length} selected
                     </Badge>
@@ -98,7 +98,7 @@ export function SkillInput({
                       <Badge
                         variant="secondary"
                         key={skill}
-                        className="pointer-events-none rounded-sm px-1 font-normal"
+                        className="pointer-events-none rounded px-1 font-normal"
                       >
                         {skill}
                       </Badge>

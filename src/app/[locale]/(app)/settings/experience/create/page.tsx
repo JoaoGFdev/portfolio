@@ -1,10 +1,5 @@
-import { ExperienceForm } from "../experience-form"
-import { FormButtons } from "../form-buttons"
+import { ExperienceForm } from "../_components/experience-form"
 
 export default function CreateExperiencePage() {
-  return (
-    <ExperienceForm>
-      <FormButtons />
-    </ExperienceForm>
-  )
+  return <ExperienceForm />
 }

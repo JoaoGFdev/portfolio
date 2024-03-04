@@ -1,6 +1,5 @@
 import { api } from "~/trpc/server"
-import { ExperienceForm } from "../experience-form"
-import { FormButtons } from "../form-buttons"
+import { ExperienceForm } from "../_components/experience-form"
 
 interface PageProps {
   params: { id: string }
@@ -9,13 +8,9 @@ interface PageProps {
 export default async function EditExperiencePage({
   params: { id },
 }: PageProps) {
-  const experience = await api.experience.getExperience.query({
+  const experience = await api.experience.getExperience({
     id,
   })
 
-  return (
-    <ExperienceForm experience={experience}>
-      <FormButtons editable />
-    </ExperienceForm>
-  )
+  return <ExperienceForm experience={experience} />
 }

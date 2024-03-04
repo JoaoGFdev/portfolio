@@ -1,21 +1,21 @@
-import { authMiddleware } from "@clerk/nextjs"
-import { NextResponse } from "next/server"
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server"
 import createMiddleware from "next-intl/middleware"
+import { locales } from "./i18n"
+import { NextResponse } from "next/server"
 
 const intlMiddleware = createMiddleware({
-  locales: ["en", "pt"],
+  locales: locales,
   defaultLocale: "en",
 })
 
-export default authMiddleware({
-  beforeAuth: (req) => {
-    return intlMiddleware(req)
-  },
-  afterAuth: () => {
-    return NextResponse.next()
-  },
+const isApiRoute = createRouteMatcher(["/api/(.*)"])
+
+export default clerkMiddleware((auth, req) => {
+  if (isApiRoute(req)) return NextResponse.next()
+
+  return intlMiddleware(req)
 })
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(en|pt)/(api|trpc)(.*)"],
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 }

@@ -1,5 +1,8 @@
 import { Suspense } from "react"
-import { ExperienceCards, LoadingExperienceCards } from "./experience-cards"
+import {
+  ExperienceCards,
+  LoadingExperienceCards,
+} from "./_components/experience-cards"
 
 export default function ExperiencePage() {
   return (

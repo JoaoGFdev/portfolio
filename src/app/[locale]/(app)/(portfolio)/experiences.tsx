@@ -18,7 +18,7 @@ export async function Experiences() {
   const locale = useLocale() as Locale
   const t = useTranslations("portfolio")
 
-  const experiences = await api.experience.getExperiences.query({
+  const experiences = await api.experience.getExperiences({
     language: getLanguage(locale),
   })
 

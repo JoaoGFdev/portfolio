@@ -65,7 +65,7 @@ export function CreateNewSkillDialog({
   }
 
   return (
-    <DialogContent className="outline-none sm:max-w-[600px]">
+    <DialogContent>
       <DialogHeader>
         <DialogTitle>Create new skill</DialogTitle>
       </DialogHeader>
@@ -86,13 +86,13 @@ export function CreateNewSkillDialog({
             </div>
           </div>
         </div>
-        <DialogFooter>
+        <DialogFooter className="flex-row justify-end gap-2">
           <DialogTrigger asChild>
             <Button type="button" variant="outline">
               Cancel
             </Button>
           </DialogTrigger>
-          <Button className="w-24" type="submit" disabled={isSubmitting}>
+          <Button type="submit" disabled={isSubmitting}>
             {isSubmitting ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : (

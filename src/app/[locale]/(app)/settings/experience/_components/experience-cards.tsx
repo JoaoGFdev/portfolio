@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "~/components/ui/card"
 
-import type { RouterOutputs } from "~/trpc/shared"
+import type { RouterOutputs } from "~/server/api/root"
 import { Button } from "~/components/ui/button"
 import Link from "next/link"
 import { Skeleton } from "~/components/ui/skeleton"
@@ -18,7 +18,7 @@ import { auth } from "@clerk/nextjs/server"
 import { canWrite } from "~/lib/roles"
 
 export async function ExperienceCards() {
-  const experiences = await api.experience.getExperiences.query({
+  const experiences = await api.experience.getExperiences({
     language: "EN",
   })
 
@@ -42,7 +42,7 @@ function ExperienceCard({
     <Card className="p-4">
       <CardHeader className="flex-row items-start justify-between space-y-0 p-0">
         <CardTitle>{experienceTranslation[0]?.title}</CardTitle>
-        {canWrite(auth()) && (
+        {canWrite(auth().sessionClaims) && (
           <Link href={`/${locale}/settings/experience/${id}`}>
             <Button variant="secondary" size="xs">
               Edit

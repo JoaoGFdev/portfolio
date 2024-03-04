@@ -16,6 +16,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "~/components/ui/form"
 import {
   Select,
@@ -24,22 +25,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select"
-import { employmentTypeMapEN, locationTypeMapEN } from "~/lib/utils"
+import { cn, employmentTypeMapEN, locationTypeMapEN } from "~/lib/utils"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
 import { Textarea } from "~/components/ui/textarea"
-import type { RouterOutputs } from "~/trpc/shared"
+import type { RouterOutputs } from "~/server/api/root"
 import { useRouter } from "next/navigation"
 import { useLocale } from "next-intl"
+import Link from "next/link"
+import { Button, buttonVariants } from "~/components/ui/button"
+import { useCanWrite } from "~/hooks/useCanWrite"
 
 export function ExperienceForm({
   experience,
-  children,
 }: {
   experience?: RouterOutputs["experience"]["getExperience"]
-  children?: React.ReactNode
 }) {
   const locale = useLocale()
   const router = useRouter()
+  const canSubmit = useCanWrite()
 
   const form = useForm<ExperienceSchema>({
     resolver: zodResolver(experienceSchema),
@@ -54,7 +57,24 @@ export function ExperienceForm({
           locationType: experience.locationType,
           skills: experience.skills.map((skill) => skill.name),
         }
-      : { language: [{ language: "PT" }, { language: "EN" }] },
+      : {
+          language: [
+            {
+              language: "PT",
+              companyName: "",
+              description: "",
+              location: "",
+              title: "",
+            },
+            {
+              language: "EN",
+              companyName: "",
+              description: "",
+              location: "",
+              title: "",
+            },
+          ],
+        },
   })
 
   const { handleSubmit, register, control, reset } = form
@@ -76,6 +96,24 @@ export function ExperienceForm({
 
               router.push(`/${locale}/settings/experience`)
             },
+            onError: (err) => {
+              if (err.data?.code === "FORBIDDEN") {
+                return toast("You don't have permission to do this", {
+                  description: `You don't have permission to update an experience.`,
+                })
+              }
+
+              if (err.data?.code === "UNAUTHORIZED") {
+                return toast("You need to be logged in", {
+                  description: `You need
+                  to be logged in to update an experience.`,
+                })
+              }
+
+              toast("Uh oh! Something went wrong.", {
+                description: `An error ocurred, please try again.`,
+              })
+            },
           },
         )
       else
@@ -85,6 +123,24 @@ export function ExperienceForm({
 
             toast("Experience created successfully!", {
               description: `Experience has been created successfully.`,
+            })
+          },
+          onError: (err) => {
+            if (err.data?.code === "FORBIDDEN") {
+              return toast("You don't have permission to do this", {
+                description: `You don't have permission to create an experience.`,
+              })
+            }
+
+            if (err.data?.code === "UNAUTHORIZED") {
+              return toast("You need to be logged in", {
+                description: `You need
+                to be logged in to create an experience.`,
+              })
+            }
+
+            toast("Uh oh! Something went wrong.", {
+              description: `An error ocurred, please try again.`,
             })
           },
         })
@@ -111,6 +167,7 @@ export function ExperienceForm({
                     onChange={field.onChange}
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -126,6 +183,7 @@ export function ExperienceForm({
                     onChange={field.onChange}
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -157,6 +215,7 @@ export function ExperienceForm({
                     })}
                   </SelectContent>
                 </Select>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -186,6 +245,7 @@ export function ExperienceForm({
                     })}
                   </SelectContent>
                 </Select>
+                <FormMessage />
               </FormItem>
             )}
           />
@@ -214,6 +274,7 @@ export function ExperienceForm({
                       defaultValue={field.value}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -230,6 +291,7 @@ export function ExperienceForm({
                       defaultValue={field.value}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -246,6 +308,7 @@ export function ExperienceForm({
                         defaultValue={field.value}
                       />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -261,6 +324,7 @@ export function ExperienceForm({
                         defaultValue={field.value}
                       />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -280,6 +344,7 @@ export function ExperienceForm({
                       defaultValue={field.value}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -296,6 +361,7 @@ export function ExperienceForm({
                       defaultValue={field.value}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -312,6 +378,7 @@ export function ExperienceForm({
                         defaultValue={field.value}
                       />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -327,6 +394,7 @@ export function ExperienceForm({
                         defaultValue={field.value}
                       />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -334,7 +402,26 @@ export function ExperienceForm({
           </TabsContent>
         </Tabs>
 
-        <div className="flex w-full justify-end gap-4">{children}</div>
+        <div className="flex w-full justify-end gap-4">
+          <div className="flex w-full justify-end gap-4">
+            <Link
+              href={`/${locale}/settings/experience`}
+              className={cn(
+                buttonVariants({ variant: "outline" }),
+                "w-full sm:w-44",
+              )}
+            >
+              Cancel
+            </Link>
+            <Button
+              className="w-full sm:w-44"
+              type="submit"
+              disabled={!canSubmit}
+            >
+              {Boolean(experience) ? "Update" : "Create"}
+            </Button>
+          </div>
+        </div>
       </form>
     </FormProvider>
   )

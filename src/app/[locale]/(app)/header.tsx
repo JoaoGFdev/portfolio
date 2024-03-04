@@ -15,8 +15,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover"
+import { useLocale } from "next-intl"
 
 export async function Header() {
+  const locale = useLocale()
   return (
     <header className="sticky top-0 flex w-full border-b border-neutral-400 bg-white dark:border-slate-500 dark:bg-slate-950">
       <div className="container flex py-2">
@@ -27,12 +29,12 @@ export async function Header() {
         <div className="flex flex-1 justify-end space-x-4">
           <MobileMenu />
           <nav className="hidden items-center space-x-1 sm:flex">
+            <Link href={`/${locale}/settings/experience`}>
+              <Button variant="link">Settings</Button>
+            </Link>
+
             <SignedIn>
-              <Link href="/settings">
-                <Button variant="link">Settings</Button>
-              </Link>
               <UserButton afterSignOutUrl="/" />
-              <span className="w-1" />
             </SignedIn>
 
             <Link
@@ -126,10 +128,10 @@ export default async function MobileMenu() {
             <div className="pl-4">
               <UserButton afterSignOutUrl="/" />
             </div>
-            <Link href="/settings">
-              <Button variant="link">Settings</Button>
-            </Link>
           </SignedIn>
+          <Link href="/settings">
+            <Button variant="link">Settings</Button>
+          </Link>
         </nav>
       </PopoverContent>
     </Popover>
