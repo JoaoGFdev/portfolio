@@ -6,5 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: ["/*", "/en", "/pt"],
     },
+    sitemap: "https://www.joaogf.dev/sitemap.xml",
   }
 }
