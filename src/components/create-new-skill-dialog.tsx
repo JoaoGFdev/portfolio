@@ -70,7 +70,15 @@ export function CreateNewSkillDialog({
         <DialogTitle>Create new skill</DialogTitle>
       </DialogHeader>
 
-      <form onSubmit={handleSubmit(handleCreateSkill)} className="w-full">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+
+          void handleSubmit(handleCreateSkill)(e)
+        }}
+        className="w-full"
+      >
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-baseline gap-4">
             <Label htmlFor="skill" className="text-right">

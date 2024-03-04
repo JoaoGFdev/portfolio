@@ -33,12 +33,15 @@ export async function generateMetadata({ params: { locale } }: LocalePage) {
       title: t("twitter.title"),
       description: t("twitter.description"),
       creator: "@joaogf_dev",
+      site: "@joaogf_dev",
+      image: "/profile.jpg",
     },
     openGraph: {
       type: "website",
       url: "https://joaogf.dev/",
       title: t("twitter.title"),
       description: t("twitter.description"),
+      image: "/profile.jpg",
     },
   }
 }
