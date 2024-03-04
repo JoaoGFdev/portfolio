@@ -1,28 +1,20 @@
-# Create T3 App
+# My Portfolio
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Welcome to my portfolio website! Here, I showcase my work and skills. I've built this site using the **T3 Stack**, a powerful full-stack framework combining [Next.js](https://nextjs.org), [Prisma](https://prisma.io), and [tRPC](https://trpc.io). With its robust features, I can create dynamic and responsive web applications efficiently.
 
-## What's next? How do I make an app with this?
+## Technology Stack
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- **Framework**: [T3 Stack](https://create.t3.gg/) - A comprehensive framework for full-stack development.
+- **Frontend**: [Next.js](https://nextjs.org) - Enables server-side rendering and a delightful developer experience.
+- **Database**: [Neon](https://neon.tech/) - A serverless PostgreSQL database, offering scalability and performance.
+- **Styling**: [Tailwind CSS](https://tailwindcss.com) - Utilized for sleek and customizable styling.
+- **UI Components**: [Shadcn](https://ui.shadcn.com/) - Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.
+- **Authentication**: [Clerk](https://clerk.com/) - Provides secure authentication features for user management.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Features
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- **Dynamic Data Management**: Utilizing Prisma and Neon, I efficiently manage and store data, ensuring seamless performance.
+- **Responsive Design**: With Tailwind CSS, I ensure that my website is visually appealing and accessible across various devices.
+- **Secure Authentication**: Clerk enables robust user authentication, ensuring data security and user privacy.
 
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+Feel free to explore my portfolio and reach out to me for any inquiries or collaborations! Thank you for visiting.
