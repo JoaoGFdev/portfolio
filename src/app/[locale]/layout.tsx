@@ -23,6 +23,7 @@ export async function generateMetadata({ params: { locale } }: LocalePage) {
   const t = await getTranslations({ locale, namespace: "Metadata" })
 
   return {
+    metadataBase: new URL("https://joaogf.dev/"),
     title: "Joaogf",
     description: t("description"),
     icons: [{ rel: "icon", url: "/favicon.ico" }],
