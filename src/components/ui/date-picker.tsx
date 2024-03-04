@@ -1,18 +1,20 @@
 "use client"
+import { format, parse } from "date-fns"
+import { ptBR } from "date-fns/locale"
+import { CalendarIcon } from "lucide-react"
+import { useLocale } from "next-intl"
 import { useState } from "react"
+
 import { Button } from "~/components/ui/button"
-import { Calendar } from "./calendar"
+import { Input } from "~/components/ui/input"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover"
 import { cn } from "~/lib/utils"
-import { format, parse } from "date-fns"
-import { CalendarIcon } from "lucide-react"
-import { Input } from "~/components/ui/input"
-import { useLocale } from "next-intl"
-import { ptBR } from "date-fns/locale"
+
+import { Calendar } from "./calendar"
 
 interface Props {
   initialDate?: Date | null

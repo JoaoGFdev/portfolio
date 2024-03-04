@@ -1,6 +1,6 @@
 import {
-  type Language,
   type EmploymentType,
+  type Language,
   type LocationType,
 } from "@prisma/client"
 import { z } from "zod"

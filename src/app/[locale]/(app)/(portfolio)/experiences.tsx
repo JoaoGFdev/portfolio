@@ -1,18 +1,19 @@
 import { Briefcase, Calendar, MapPin } from "lucide-react"
+import { useLocale, useTranslations } from "next-intl"
+
+import { Badge } from "~/components/ui/badge"
+import { Skeleton } from "~/components/ui/skeleton"
+import type { Locale } from "~/i18n"
+import { formatDate } from "~/lib/date"
 import {
   cn,
   employmentTypeMapEN,
   employmentTypeMapPT,
+  getLanguage,
   locationTypeMapEN,
   locationTypeMapPT,
-  getLanguage,
 } from "~/lib/utils"
 import { api } from "~/trpc/server"
-import { Badge } from "~/components/ui/badge"
-import { formatDate } from "~/lib/date"
-import type { Locale } from "~/i18n"
-import { useTranslations, useLocale } from "next-intl"
-import { Skeleton } from "~/components/ui/skeleton"
 
 export async function Experiences() {
   const locale = useLocale() as Locale

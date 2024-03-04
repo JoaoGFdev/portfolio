@@ -1,9 +1,10 @@
 "use client"
 
-import { useSession, SignInButton } from "@clerk/nextjs"
-import { useLocale } from "next-intl"
+import { SignInButton, useSession } from "@clerk/nextjs"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useLocale } from "next-intl"
+
 import { Button } from "~/components/ui/button"
 
 // Accepts all props from the SignInButton component

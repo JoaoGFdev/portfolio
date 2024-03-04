@@ -1,21 +1,22 @@
 import { SignedIn, UserButton } from "@clerk/nextjs"
-import Link from "next/link"
-import { Button, buttonVariants } from "~/components/ui/button"
-import { cn } from "~/lib/utils"
-import { Logo } from "../../../components/logo"
-import { ToggleTheme } from "~/components/toggle-theme"
 import {
   GitHubLogoIcon,
   HamburgerMenuIcon,
   LinkedInLogoIcon,
 } from "@radix-ui/react-icons"
+import Link from "next/link"
+import { useLocale } from "next-intl"
+
+import { Logo } from "~/components/logo"
 import { ToggleLocale } from "~/components/toggle-locale"
+import { ToggleTheme } from "~/components/toggle-theme"
+import { Button, buttonVariants } from "~/components/ui/button"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "~/components/ui/popover"
-import { useLocale } from "next-intl"
+import { cn } from "~/lib/utils"
 
 export async function Header() {
   const locale = useLocale()

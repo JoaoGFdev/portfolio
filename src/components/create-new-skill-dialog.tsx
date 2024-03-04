@@ -1,8 +1,10 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
 import { Loader2 } from "lucide-react"
-import { z } from "zod"
+import { useForm } from "react-hook-form"
 import { toast } from "sonner"
+import { z } from "zod"
+
+import { api } from "~/trpc/react"
 
 import { Button } from "./ui/button"
 import {
@@ -14,7 +16,6 @@ import {
 } from "./ui/dialog"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
-import { api } from "~/trpc/react"
 
 const newSkillFormSchema = z.object({
   name: z.string({

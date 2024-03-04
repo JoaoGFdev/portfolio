@@ -1,7 +1,8 @@
-import { skillRouter } from "~/server/api/routers/skill"
+import { type inferRouterInputs,type inferRouterOutputs } from "@trpc/server"
+
 import { experienceRouter } from "~/server/api/routers/experience"
+import { skillRouter } from "~/server/api/routers/skill"
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc"
-import { type inferRouterOutputs, type inferRouterInputs } from "@trpc/server"
 
 /**
  * This is the primary router for your server.

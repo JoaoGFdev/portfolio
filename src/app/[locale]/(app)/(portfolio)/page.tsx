@@ -1,11 +1,13 @@
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
-import { Experiences, LoadingExperiences } from "./experiences"
+import { Calendar, Mail, MapPin } from "lucide-react"
 import { useTranslations } from "next-intl"
-import type { LocalePage } from "~/i18n"
 import { unstable_setRequestLocale } from "next-intl/server"
 import { Suspense } from "react"
+
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { Button } from "~/components/ui/button"
-import { Calendar, Mail, MapPin } from "lucide-react"
+import type { LocalePage } from "~/i18n"
+
+import { Experiences, LoadingExperiences } from "./experiences"
 
 export default function HomePage({ params: { locale } }: LocalePage) {
   unstable_setRequestLocale(locale)

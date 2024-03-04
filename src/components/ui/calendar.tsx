@@ -1,6 +1,9 @@
 "use client"
 
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import * as React from "react"
+import { DayPicker, type DropdownProps } from "react-day-picker"
+
 import { buttonVariants } from "~/components/ui/button"
 import { ScrollArea } from "~/components/ui/scroll-area"
 import {
@@ -11,8 +14,6 @@ import {
   SelectValue,
 } from "~/components/ui/select"
 import { cn } from "~/lib/utils"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { DayPicker, type DropdownProps } from "react-day-picker"
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 

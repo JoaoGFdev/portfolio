@@ -1,11 +1,13 @@
 import "~/app/globals.css"
 
 import { Inter } from "next/font/google"
-import { unstable_setRequestLocale, getTranslations } from "next-intl/server"
-import { cn } from "~/lib/utils"
-import { Provider } from "~/components/providers"
 import localFont from "next/font/local"
-import { locales, type LocaleLayout, type LocalePage } from "~/i18n"
+import { getTranslations, unstable_setRequestLocale } from "next-intl/server"
+
+import { Provider } from "~/components/providers"
+import { type LocaleLayout, type LocalePage, locales } from "~/i18n"
+import { cn } from "~/lib/utils"
+
 import { Header } from "./(app)/header"
 
 const inter = Inter({

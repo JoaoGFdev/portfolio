@@ -1,11 +1,11 @@
 "use client"
 
+import type { Route } from "next"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import type { Route } from "next"
 
-import { cn } from "~/lib/utils"
 import { buttonVariants } from "~/components/ui/button"
+import { cn } from "~/lib/utils"
 
 interface SidebarNavProps<T extends string>
   extends React.HTMLAttributes<HTMLElement> {

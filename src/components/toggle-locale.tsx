@@ -1,17 +1,18 @@
 "use client"
 
-import { useLocale } from "next-intl"
 import { usePathname, useRouter } from "next/navigation"
-import { Globe } from "lucide-react"
+import { useLocale } from "next-intl"
+
+import type { Locale } from "~/i18n"
+import { cn } from "~/lib/utils"
+
+import { Button } from "./ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
-import { Button } from "./ui/button"
-import type { Locale } from "~/i18n"
-import { cn } from "~/lib/utils"
 
 export function ToggleLocale() {
   const router = useRouter()

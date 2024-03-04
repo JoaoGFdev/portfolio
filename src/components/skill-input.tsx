@@ -4,6 +4,7 @@ import { useState } from "react"
 import { twMerge } from "tailwind-merge"
 
 import useDebounceValue from "~/hooks/useDebounceValue"
+import { api } from "~/trpc/react"
 
 import { CreateNewSkillDialog } from "./create-new-skill-dialog"
 import { Badge } from "./ui/badge"
@@ -19,7 +20,6 @@ import { Dialog } from "./ui/dialog"
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
 import { ScrollArea } from "./ui/scroll-area"
 import { Separator } from "./ui/separator"
-import { api } from "~/trpc/react"
 
 export interface SkillInputProps {
   value: string[]

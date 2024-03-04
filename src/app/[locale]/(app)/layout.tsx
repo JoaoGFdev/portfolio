@@ -1,4 +1,5 @@
 import { type PropsWithChildren } from "react"
+
 import { TailwindIndicator } from "~/components/tailwind-indicator"
 
 export default function Layout({ children }: PropsWithChildren) {
