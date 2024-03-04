@@ -42,7 +42,7 @@ export default function HomePage({ params: { locale } }: LocalePage) {
           </div>
 
           <div className="flex flex-col space-y-2">
-            <h1 className="font-anta text-5xl font-bold md:text-6xl">
+            <h1 className="font-anta text-4xl font-bold sm:text-5xl lg:text-6xl">
               João Guilherme Fonseca
             </h1>
             <p className="hidden whitespace-pre-line text-sm md:flex md:text-base lg:w-3/4">

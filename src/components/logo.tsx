@@ -7,11 +7,10 @@ import { useLocale } from "next-intl"
 
 import { Button } from "~/components/ui/button"
 
-// Accepts all props from the SignInButton component
 function Btn({ ...props }) {
   return (
     <Button
-      className="-ml-4 pb-2 pt-1 font-anta text-xl font-bold lg:pb-4 lg:pt-3 lg:text-3xl"
+      className="-ml-4 pb-2 pt-1 font-anta text-3xl font-bold lg:pb-4 lg:pt-3 "
       variant="ghost"
       {...props}
     >
