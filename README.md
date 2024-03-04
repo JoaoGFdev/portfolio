@@ -17,4 +17,4 @@ Welcome to my portfolio website! Here, I showcase my work and skills. I've built
 - **Responsive Design**: With Tailwind CSS, I ensure that my website is visually appealing and accessible across various devices.
 - **Secure Authentication**: Clerk enables robust user authentication, ensuring data security and user privacy.
 
-Feel free to explore my portfolio and reach out to me for any inquiries or collaborations! Thank you for visiting.
+Feel free to explore my portfolio and reach out to me for any inquiries or collaborations! Thank you for visiting. 🚀
