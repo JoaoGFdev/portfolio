@@ -21,10 +21,11 @@ export const skillRouter = createTRPCRouter({
       z.object({
         search: z.string().optional(),
         take: z.number().default(20),
+        searchUsedSkills: z.boolean().optional(),
       }),
     )
     .query(({ ctx, input }) => {
-      const { search, take } = input
+      const { search, take, searchUsedSkills } = input
 
       return ctx.db.skill.findMany({
         where: {
@@ -32,6 +33,16 @@ export const skillRouter = createTRPCRouter({
             contains: search,
             mode: "insensitive",
           },
+
+          experiences: searchUsedSkills
+            ? {
+                some: {
+                  id: {
+                    gt: 0,
+                  },
+                },
+              }
+            : undefined,
         },
         take: take,
       })

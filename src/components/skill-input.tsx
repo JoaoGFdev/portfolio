@@ -1,5 +1,6 @@
 import { CheckIcon, PlusIcon } from "@radix-ui/react-icons"
-import { Loader2, Tag } from "lucide-react"
+import { Loader2, MinusIcon, Tag } from "lucide-react"
+import { useLocale } from "next-intl"
 import { useState } from "react"
 import { twMerge } from "tailwind-merge"
 
@@ -27,6 +28,8 @@ export interface SkillInputProps {
   error?: string
   previewSkillsAmount?: number
   allowSkillCreation?: boolean
+  allowRemoveAll?: boolean
+  searchUsedSkills?: boolean
   onApplyToAll?: () => void
 }
 
@@ -36,8 +39,11 @@ export function SkillInput({
   error,
   previewSkillsAmount = 5,
   allowSkillCreation = true,
+  allowRemoveAll = false,
+  searchUsedSkills = false,
   onApplyToAll,
 }: SkillInputProps) {
+  const locale = useLocale()
   const [createSkillDialogOpen, setCreateSkillDialogOpen] = useState(false)
   const [open, setOpen] = useState(false)
   const [search, setSearch] = useState("")
@@ -50,6 +56,7 @@ export function SkillInput({
     isFetching: isPendingSkillOptions,
   } = api.skill.getSkills.useQuery({
     search: searchTerm,
+    searchUsedSkills,
   })
 
   function handleAddSkill(skill: string) {
@@ -58,6 +65,10 @@ export function SkillInput({
 
   function handleRemoveSkill(skill: string) {
     onValueChange(value.filter((item) => item !== skill))
+  }
+
+  function handleRemoveAll() {
+    onValueChange([])
   }
 
   return (
@@ -129,6 +140,16 @@ export function SkillInput({
                     >
                       <PlusIcon className="h-3 w-3" />
                       Create new
+                    </CommandItem>
+                  )}
+
+                  {allowRemoveAll && (
+                    <CommandItem
+                      onSelect={handleRemoveAll}
+                      className="flex items-center gap-2"
+                    >
+                      <MinusIcon className="h-3 w-3" />
+                      {locale === "en" ? "Clear filter" : "Limpar filtro"}
                     </CommandItem>
                   )}
 

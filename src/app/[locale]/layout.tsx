@@ -8,7 +8,7 @@ import { Provider } from "~/components/providers"
 import { type LocaleLayout, type LocalePage, locales } from "~/i18n"
 import { cn } from "~/lib/utils"
 
-import { Header } from "./(app)/header"
+import { Header } from "../../components/header"
 
 const inter = Inter({
   subsets: ["latin"],

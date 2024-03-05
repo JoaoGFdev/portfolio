@@ -24,5 +24,7 @@ export type LocaleLayout = {
 export type LocalePage = {
   params: {
     locale: Locale
+    [key: string]: string | string[]
   }
+  searchParams: Record<string, string | string[] | undefined>
 }
