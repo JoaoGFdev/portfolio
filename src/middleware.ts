@@ -9,7 +9,11 @@ const intlMiddleware = createMiddleware({
   defaultLocale: "en",
 })
 
-const isApiRoute = createRouteMatcher(["/api/(.*)"])
+const isApiRoute = createRouteMatcher([
+  "/api/(.*)",
+  "/robots.txt",
+  "/sitemap.xml",
+])
 
 export default clerkMiddleware((auth, req) => {
   if (isApiRoute(req)) return NextResponse.next()
@@ -18,5 +22,11 @@ export default clerkMiddleware((auth, req) => {
 })
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: [
+    "/((?!.+\\.[\\w]+$|_next).*)",
+    "/",
+    "/(api|trpc)(.*)",
+    "/robots.txt",
+    "/sitemap.xml",
+  ],
 }
