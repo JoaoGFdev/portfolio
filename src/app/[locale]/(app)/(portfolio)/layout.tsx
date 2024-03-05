@@ -24,8 +24,8 @@ export default function PortfolioLayout({
           <div className="flex flex-col space-y-2">
             <Avatar className="static h-32 w-32 rounded-3xl sm:h-36 sm:w-36 md:h-48 md:w-48">
               <AvatarImage
-                src="https://github.com/joaogf03.png"
-                alt="@joaogf"
+                src="https://github.com/JoaoGFdev.png"
+                alt="@JoaoGFdev"
               />
               <AvatarFallback className="rounded-3xl font-anta text-5xl md:text-9xl">
                 JG

@@ -52,7 +52,7 @@ export async function Header() {
             </Link>
 
             <Link
-              href="https://github.com/JoaoGF03"
+              href="https://github.com/JoaoGFdev"
               target="_blank"
               rel="noreferrer"
               className={buttonVariants({
@@ -105,7 +105,7 @@ export default async function MobileMenu() {
           </Link>
 
           <Link
-            href="https://github.com/JoaoGF03"
+            href="https://github.com/JoaoGFdev"
             target="_blank"
             rel="noreferrer"
             className={cn(
