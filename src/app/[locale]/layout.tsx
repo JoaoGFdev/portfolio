@@ -26,7 +26,7 @@ export async function generateMetadata({ params: { locale } }: LocalePage) {
 
   return {
     metadataBase: new URL("https://joaogf.dev/"),
-    title: "Joaogf",
+    title: "Joaogf | Portfolio",
     description: t("description"),
     icons: [{ rel: "icon", url: "/favicon.ico" }],
     keywords:
