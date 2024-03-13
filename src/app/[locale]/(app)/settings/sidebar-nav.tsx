@@ -10,7 +10,7 @@ import { cn } from "~/lib/utils"
 interface SidebarNavProps<T extends string>
   extends React.HTMLAttributes<HTMLElement> {
   items: {
-    href: Route<T> | URL
+    href: Route<T>
     title: string
   }[]
 }
@@ -30,21 +30,23 @@ export function SidebarNav<T extends string>({
       )}
       {...props}
     >
-      {items.map((item, i) => (
-        <Link
-          key={i}
-          // @ts-expect-error - `href` is a string
-          href={item.href}
-          className={cn(
-            buttonVariants({ variant: "ghost" }),
-            pathname.includes(item.href.toString()) &&
-              "bg-slate-100 dark:bg-slate-800",
-            "justify-start",
-          )}
-        >
-          {item.title}
-        </Link>
-      ))}
+      {items.map((item, i) => {
+        const href = item.href.toString().replace(/\/(en|pt)/, "")
+
+        return (
+          <Link
+            key={i}
+            href={item.href}
+            className={cn(
+              buttonVariants({ variant: "ghost" }),
+              pathname.includes(href) && "bg-slate-100 dark:bg-slate-800",
+              "justify-start",
+            )}
+          >
+            {item.title}
+          </Link>
+        )
+      })}
     </nav>
   )
 }

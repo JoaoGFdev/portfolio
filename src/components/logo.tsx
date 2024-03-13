@@ -24,16 +24,16 @@ export function Logo() {
   const { isLoaded } = useSession()
   const path = usePathname()
 
-  if (path !== `/${locale}` || !isLoaded)
+  if ((path === "/" || path === `/${locale}`) && isLoaded)
     return (
-      <Link href={`/${locale}`}>
+      <SignInButton mode="modal">
         <Btn />
-      </Link>
+      </SignInButton>
     )
 
   return (
-    <SignInButton mode="modal">
+    <Link href={`/${locale}`}>
       <Btn />
-    </SignInButton>
+    </Link>
   )
 }

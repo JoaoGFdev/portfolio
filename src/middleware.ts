@@ -7,6 +7,7 @@ import { locales } from "./i18n"
 const intlMiddleware = createMiddleware({
   locales: locales,
   defaultLocale: "en",
+  localePrefix: "as-needed",
 })
 
 const isApiRoute = createRouteMatcher([
