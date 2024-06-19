@@ -1,15 +1,13 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useLocale } from "next-intl"
 import { FormProvider, useForm } from "react-hook-form"
 import { toast } from "sonner"
-import { api } from "~/trpc/react"
-import { SkillsInput } from "./skills-input"
-import {
-  type ExperienceSchema,
-  experienceSchema,
-} from "~/schemas/experience.schema"
-import { Input } from "~/components/ui/input"
+
+import { Button, buttonVariants } from "~/components/ui/button"
 import { DatePicker } from "~/components/ui/date-picker"
 import {
   FormControl,
@@ -18,6 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "~/components/ui/form"
+import { Input } from "~/components/ui/input"
 import {
   Select,
   SelectContent,
@@ -25,15 +24,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select"
-import { cn, employmentTypeMapEN, locationTypeMapEN } from "~/lib/utils"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs"
 import { Textarea } from "~/components/ui/textarea"
-import type { RouterOutputs } from "~/server/api/root"
-import { useRouter } from "next/navigation"
-import { useLocale } from "next-intl"
-import Link from "next/link"
-import { Button, buttonVariants } from "~/components/ui/button"
 import { useCanWrite } from "~/hooks/useCanWrite"
+import { cn, employmentTypeMapEN, locationTypeMapEN } from "~/lib/utils"
+import {
+  type ExperienceSchema,
+  experienceSchema,
+} from "~/schemas/experience.schema"
+import type { RouterOutputs } from "~/server/api/root"
+import { api } from "~/trpc/react"
+
+import { SkillsInput } from "./skills-input"
 
 export function ExperienceForm({
   experience,
@@ -48,7 +50,7 @@ export function ExperienceForm({
     resolver: zodResolver(experienceSchema),
     defaultValues: experience
       ? {
-          language: experience.experienceTranslation.sort((a, b) =>
+          language: experience.experienceTranslation.sort((a) =>
             a.language === "PT" ? -1 : 1,
           ),
           startDate: experience.startDate,

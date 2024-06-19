@@ -1,10 +1,10 @@
 import { z } from "zod"
-import { experienceSchema, language } from "~/schemas/experience.schema"
 
+import { experienceSchema, language } from "~/schemas/experience.schema"
 import {
   createTRPCRouter,
-  publicProcedure,
   protectedProcedure,
+  publicProcedure,
 } from "~/server/api/trpc"
 
 export const experienceRouter = createTRPCRouter({
@@ -83,10 +83,18 @@ export const experienceRouter = createTRPCRouter({
     .input(
       z.object({
         language: language,
+        skills: z
+          .string()
+          .optional()
+          .transform((skills) => {
+            if (skills === undefined) return []
+
+            return skills.split(",")
+          }),
       }),
     )
     .query(async ({ ctx, input }) => {
-      const { language } = input
+      const { language, skills } = input
 
       return ctx.db.experience.findMany({
         where: {
@@ -95,6 +103,13 @@ export const experienceRouter = createTRPCRouter({
               language,
             },
           },
+          AND: skills?.map((name) => ({
+            skills: {
+              some: {
+                name,
+              },
+            },
+          })),
         },
         include: {
           skills: {

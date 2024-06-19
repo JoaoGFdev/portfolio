@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "twitter": {
-      "title": "João Guilherme Fonseca | Desenvolvedor Front End",
+      "title": "João Guilherme Fonseca",
       "description": "Desenvolvedor Front End do Brasil. Apaixonado por desenvolvimento web e adoro criar sites bonitos e performáticos. Estou sempre em busca de novos desafios e oportunidades para aprender e crescer."
     },
     "description": "Portfólio de João Guilherme, um desenvolvedor de software do Brasil."
@@ -16,6 +16,7 @@
       "date": "jan 2018 - dez 2023",
       "description": "Bacharelado em Ciência da Computação",
       "place": "Vila Velha, ES, Brasil"
-    }
+    },
+    "filter": "Filtrar por"
   }
 }

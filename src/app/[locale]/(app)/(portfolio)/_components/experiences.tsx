@@ -1,25 +1,27 @@
 import { Briefcase, Calendar, MapPin } from "lucide-react"
+import { useLocale } from "next-intl"
+import { getTranslations } from "next-intl/server"
+
+import { Badge } from "~/components/ui/badge"
+import type { Locale } from "~/i18n"
+import { formatDate } from "~/lib/date"
 import {
   cn,
   employmentTypeMapEN,
   employmentTypeMapPT,
+  getLanguage,
   locationTypeMapEN,
   locationTypeMapPT,
-  getLanguage,
 } from "~/lib/utils"
 import { api } from "~/trpc/server"
-import { Badge } from "~/components/ui/badge"
-import { formatDate } from "~/lib/date"
-import type { Locale } from "~/i18n"
-import { useTranslations, useLocale } from "next-intl"
-import { Skeleton } from "~/components/ui/skeleton"
 
-export async function Experiences() {
+export async function Experiences({ skills }: { skills?: string | string[] }) {
   const locale = useLocale() as Locale
-  const t = useTranslations("portfolio")
+  const t = await getTranslations("portfolio")
 
   const experiences = await api.experience.getExperiences({
     language: getLanguage(locale),
+    skills: skills?.toString(),
   })
 
   return (
@@ -111,41 +113,6 @@ export async function Experiences() {
           )
         },
       )}
-    </ul>
-  )
-}
-
-export function LoadingExperiences() {
-  return (
-    <ul className="divide-y divide-slate-200 dark:divide-slate-800">
-      <li className="pb-12">
-        <article>
-          <div className="flex flex-col-reverse gap-x-4 gap-y-4 lg:grid lg:grid-cols-7">
-            <div className="flex h-full flex-col space-y-1 text-gray-500 dark:text-gray-400 lg:col-span-2">
-              <div className="flex h-6 items-center space-x-2">
-                <Calendar size={16} />
-                <Skeleton className="h-5 w-3/4" />
-              </div>
-
-              <div className="flex h-6 items-center space-x-2">
-                <Briefcase size={16} />
-                <Skeleton className="h-5 w-3/4" />
-              </div>
-
-              <div className="flex h-6 items-center space-x-2">
-                <MapPin size={16} />
-                <Skeleton className="h-5 w-3/4" />
-              </div>
-            </div>
-
-            <div className="space-y-4 lg:col-span-5">
-              <Skeleton className="h-10" />
-
-              <Skeleton className="h-20" />
-            </div>
-          </div>
-        </article>
-      </li>
     </ul>
   )
 }

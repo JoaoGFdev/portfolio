@@ -1,7 +1,9 @@
-import { Separator } from "~/components/ui/separator"
-import { SidebarNav } from "./sidebar-nav"
-import type { LocaleLayout } from "~/i18n"
 import { unstable_setRequestLocale } from "next-intl/server"
+
+import { Separator } from "~/components/ui/separator"
+import type { LocaleLayout } from "~/i18n"
+
+import { SidebarNav } from "./sidebar-nav"
 
 export const metadata = {
   title: "Joaogf - Settings",

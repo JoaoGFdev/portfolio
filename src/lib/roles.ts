@@ -1,6 +1,6 @@
+import type { useUser } from "@clerk/nextjs"
 import type { auth } from "@clerk/nextjs/server"
 import { z } from "zod"
-import type { useUser } from "@clerk/nextjs"
 
 const role = z.literal("me").or(z.literal("write")).optional()
 
