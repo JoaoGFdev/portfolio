@@ -10,7 +10,7 @@ export function WorkSection() {
       {workExperiences.map((experience, index) => (
         <div
           key={index}
-          className="space-y-4 border-b border-zinc-800 py-6 last:border-b-0"
+          className="space-y-4 border-b border-zinc-200 py-6 last:border-b-0 dark:border-zinc-800"
         >
           <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
             <div>
@@ -21,7 +21,7 @@ export function WorkSection() {
                 {experience.startDate} - {experience.endDate}
               </p>
             </div>
-            <div className="space-y-1 text-sm text-zinc-500">
+            <div className="space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
               <div className="flex items-center gap-2">
                 <Building2 className="h-4 w-4" />
                 <span>{experience.type}</span>
@@ -35,7 +35,7 @@ export function WorkSection() {
           <div className="space-y-4">
             <div className="space-y-2">
               {experience.description.split("\n").map((paragraph, index) => (
-                <p key={index} className="text-zinc-400">
+                <p key={index} className="text-zinc-800 dark:text-zinc-400">
                   {paragraph}
                 </p>
               ))}
@@ -44,7 +44,7 @@ export function WorkSection() {
               {experience.skills.map((skill) => (
                 <div
                   key={skill}
-                  className="cursor-default rounded-xl bg-zinc-800 px-2 py-1 text-xs hover:bg-zinc-700"
+                  className="cursor-default rounded-xl bg-zinc-100 px-2 py-1 text-xs dark:bg-zinc-800"
                 >
                   {skill}
                 </div>
