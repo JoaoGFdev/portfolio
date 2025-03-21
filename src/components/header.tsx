@@ -1,14 +1,21 @@
 import { Github, Linkedin, Mail } from "lucide-react"
 import Link from "next/link"
+import { getTranslations } from "next-intl/server"
 
+import { ToggleLocale } from "./toggle-locale"
 import { ToggleTheme } from "./toggle-theme"
-// text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800
-export function Header() {
+
+export async function Header() {
+  const t = await getTranslations("Header")
+
   return (
     <header className="mb-12 space-y-4">
       <div className="flex justify-between">
         <h1 className="text-4xl font-bold">João Guilherme Fonseca</h1>
-        <ToggleTheme />
+        <div className="flex gap-2">
+          <ToggleLocale />
+          <ToggleTheme />
+        </div>
       </div>
 
       <div className="flex items-center space-x-1 text-zinc-900 dark:text-zinc-400">
@@ -35,11 +42,8 @@ export function Header() {
         </Link>
       </div>
 
-      <p className="max-w-2xl text-zinc-800 dark:text-zinc-400">
-        Front End Developer from Brazil. I&apos;m passionate about web
-        development and I love to create beautiful and performant websites.
-        I&apos;m always looking for new challenges and opportunities to learn
-        and grow
+      <p className="max-w-3xl text-zinc-800 dark:text-zinc-400">
+        {t("description")}
       </p>
     </header>
   )

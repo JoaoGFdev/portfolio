@@ -1,0 +1,74 @@
+{
+  "Header": {
+    "description": "Sou desenvolvedor Front-End do Brasil, curioso por natureza e sempre em busca de criar interfaces bem projetadas, rápidas e fáceis de usar. Adoro aprender, experimentar e ver ideias ganharem vida na tela.",
+    "toggleTheme": "Alternar tema"
+  },
+  "EducationSection": {
+    "section": "Educação",
+    "title": "Bacharelado em Ciência da Computação",
+    "institution": "Universidade de Vila Velha | UVV",
+    "date": "Jan 2018 | Dez 2023",
+    "city": "Vila Velha, ES, Brasil"
+  },
+  "Sections": {
+    "experience": "Experiência",
+    "education": "Educação"
+  },
+  "WorkExperienceSection": {
+    "section": "Experiência",
+    "slabware": {
+      "name": "Slabware",
+      "role": "Desenvolvedor Mobile",
+      "date": "Mar 2024 | Presente",
+      "type": "Tempo integral | Presencial",
+      "location": "Vila Velha, ES, Brasil",
+      "description": "Faço parte do time mobile, trabalhando com React Native e Expo para melhorar e escalar nossos aplicativos. No dia a dia, atuo refatorando código, desenvolvendo novas funcionalidades e garantindo que tudo funcione de forma fluida e intuitiva para os usuários.",
+      "skills": "Expo, Git, React, Typescript"
+    },
+    "beebee": {
+      "name": "BeeBee",
+      "role": "Desenvolvedor Frontend",
+      "date": "Out 2023 | Mar 2024",
+      "type": "Tempo integral | Remoto",
+      "location": "Vitória, ES, Brasil",
+      "description": "Trabalhei em plataformas web e mobile utilizando React.js e Expo. Também liderei provas de conceito com Flutter para testar novas ferramentas e melhorar nossos processos.",
+      "skills": "Expo, Git, React, Tailwind, Typescript, Flutter"
+    },
+    "gmill": {
+      "name": "Grupo GMill",
+      "role": "Desenvolvedor Frontend",
+      "date": "Nov 2022 | Out 2023",
+      "type": "Tempo integral | Presencial",
+      "location": "Serra, ES, Brasil",
+      "description": "Liderei a migração de um sistema legado em Angular para uma stack moderna com React, TypeScript e Tailwind CSS. Também desenvolvi um aplicativo mobile com Expo e React Native para melhorar a experiência do usuário e a escalabilidade.",
+      "skills": "Expo, Git, React, Tailwind, Typescript"
+    },
+    "atw": {
+      "name": "ATW Delivery Brands",
+      "role": "Desenvolvedor Backend",
+      "date": "Mar 2022 | Nov 2022",
+      "type": "Estágio | Presencial",
+      "location": "Vitória, ES, Brasil",
+      "description": "Como estagiário de backend, desenvolvi APIs usando Node.js e Express, implementei testes automatizados com Jest e atuei na integração com banco de dados via Prisma. Também prototipei um recurso de chat em tempo real com Socket.io.",
+      "skills": "Next, Git, Node, React, Tailwind, Typescript"
+    },
+    "uvv": {
+      "name": "UVV",
+      "role": "Desenvolvedor Backend",
+      "date": "Set 2021 | Mar 2022",
+      "type": "Bolsa de trabalho | Presencial",
+      "location": "Vila Velha, ES, Brasil",
+      "description": "Desenvolvi uma API em .NET para um projeto de realidade virtual e continuei atuando com programação na Unity. Essa experiência contribuiu muito para meu crescimento tanto em backend quanto em desenvolvimento de jogos.",
+      "skills": "Node, Typescript"
+    },
+    "uvv-volunteer": {
+      "name": "UVV",
+      "role": "Desenvolvedor de Jogos",
+      "date": "Jul 2019 | Set 2021",
+      "type": "Voluntário | Presencial",
+      "location": "Vila Velha, ES, Brasil",
+      "description": "Participei de um projeto de realidade virtual onde aprendi Unity com C#. Atuei principalmente na prototipação de interfaces, adquirindo experiência prática em desenvolvimento de jogos e design de experiência do usuário.",
+      "skills": "Unity, C#"
+    }
+  }
+}
