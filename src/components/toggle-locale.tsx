@@ -12,7 +12,7 @@ export async function ToggleLocale() {
         type="submit"
         className="flex gap-2 rounded-xl p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
       >
-        <p className="h-6 w-6 text-zinc-600 dark:text-zinc-200">
+        <p className="size-6 text-zinc-600 dark:text-zinc-200">
           {locale.toUpperCase()}
         </p>
         <span className="sr-only">{t("toggleTheme")}</span>
