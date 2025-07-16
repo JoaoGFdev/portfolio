@@ -8,11 +8,8 @@ export async function getLocale() {
   const acceptLanguage: string = requestHeaders.get("accept-language") ?? ""
   const currentCookie = cookieStore.get("NEXT_LOCALE")?.value
 
-  const currentLocale = currentCookie
-    ? currentCookie
-    : acceptLanguage.toLowerCase().includes("pt")
-      ? "pt"
-      : "en"
+  const currentLocale =
+    currentCookie ?? (acceptLanguage.toLowerCase().includes("pt") ? "pt" : "en")
 
   return currentLocale
 }
