@@ -23,21 +23,21 @@ export async function Header() {
           href="https://github.com/JoaoGFdev"
           className="rounded-xl p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
         >
-          <Github className="h-5 w-5" />
+          <Github className="size-5" />
           <span className="sr-only">GitHub</span>
         </Link>
         <Link
           href="https://www.linkedin.com/in/joaogfonseca/"
           className="rounded-xl p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
         >
-          <Linkedin className="h-5 w-5" />
+          <Linkedin className="size-5" />
           <span className="sr-only">LinkedIn</span>
         </Link>
         <Link
           href="mailto:me@joaogf.dev"
           className="flex items-center gap-2 rounded-xl p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
         >
-          <Mail className="h-5 w-5" />
+          <Mail className="size-5" />
           <span>me@joaogf.dev</span>
         </Link>
       </div>
