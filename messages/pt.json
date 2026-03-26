@@ -16,13 +16,22 @@
   },
   "WorkExperienceSection": {
     "section": "Experiência",
+    "acelera": {
+      "name": "Acelera Concursos",
+      "role": "Desenvolvedor Mobile",
+      "date": "Mar 2026 | Presente",
+      "type": "Tempo integral | Remoto",
+      "location": "Brasil",
+      "description": "Sou o responsável pelo aplicativo mobile, construindo do zero com Expo e React Native, com o suporte do restante da equipe.",
+      "skills": "Expo, Git, React, Typescript"
+    },
     "slabware": {
       "name": "Slabware",
       "role": "Desenvolvedor Mobile",
-      "date": "Mar 2024 | Presente",
+      "date": "Mar 2024 | Mar 2026",
       "type": "Tempo integral | Presencial",
       "location": "Vila Velha, ES, Brasil",
-      "description": "Faço parte do time mobile, trabalhando com React Native e Expo para melhorar e escalar nossos aplicativos. No dia a dia, atuo refatorando código, desenvolvendo novas funcionalidades e garantindo que tudo funcione de forma fluida e intuitiva para os usuários.",
+      "description": "Fiz parte do time mobile, trabalhando com React Native e Expo para melhorar e escalar nossos aplicativos. No dia a dia, atuei refatorando código, desenvolvendo novas funcionalidades e garantindo que tudo funcionasse de forma fluida e intuitiva para os usuários.",
       "skills": "Expo, Git, React, Typescript"
     },
     "beebee": {
