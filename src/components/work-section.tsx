@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server"
 import { Section } from "./section"
 
 const companies = [
+  "acelera",
   "slabware",
   "beebee",
   "gmill",

@@ -16,13 +16,22 @@
   },
   "WorkExperienceSection": {
     "section": "Experience",
+    "acelera": {
+      "name": "Acelera Concursos",
+      "role": "Mobile Developer",
+      "date": "Mar 2026 | Present",
+      "type": "Full-time | Remote",
+      "location": "Brazil",
+      "description": "I'm responsible for the mobile app, building it from scratch using Expo and React Native with the support of the rest of the team.",
+      "skills": "Expo, Git, React, Typescript"
+    },
     "slabware": {
       "name": "Slabware",
       "role": "Mobile Developer",
-      "date": "Mar 2024 | Present",
+      "date": "Mar 2024 | Mar 2026",
       "type": "Full-time | Onsite",
       "location": "Vila Velha, ES, Brazil",
-      "description": "I'm part of the mobile team, working with React Native and Expo to improve and scale our apps. My day-to-day includes refactoring code, developing new features, and making sure everything runs smoothly and intuitively for users.",
+      "description": "I was part of the mobile team, working with React Native and Expo to improve and scale our apps. My day-to-day included refactoring code, developing new features, and making sure everything ran smoothly and intuitively for users.",
       "skills": "Expo, Git, React, Typescript"
     },
     "beebee": {
