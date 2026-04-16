@@ -40,8 +40,8 @@ export async function WorkSection() {
             <div className="max-w-2xl space-y-2">
               {t(`${c}.description`)
                 .split("\n")
-                .map((paragraph, index) => (
-                  <p key={index} className="text-zinc-800 dark:text-zinc-400">
+                .map((paragraph) => (
+                  <p key={paragraph} className="text-zinc-800 dark:text-zinc-400">
                     {paragraph}
                   </p>
                 ))}
