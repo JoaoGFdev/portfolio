@@ -22,8 +22,8 @@
       "date": "Mar 2026 | Present",
       "type": "Full-time | Hybrid",
       "location": "Brazil",
-      "description": "I'm the mobile developer responsible for building the company's app from scratch using Expo and React Native. Working closely with the rest of the team, I'm involved in architecture decisions, feature development, and everything it takes to deliver a solid product from day one.",
-      "skills": "Expo, Git, React, Typescript"
+      "description": "- Architected and built the company's mobile app from scratch using Expo and React Native, making key architecture decisions from day one.\n- Drove feature development across the full product lifecycle, coordinating closely with cross-functional teams.\n- Applied TypeScript throughout for type safety, maintainability, and scalability.",
+      "skills": "Expo, React Native, Typescript, Git"
     },
     "slabware": {
       "name": "Slabware",
@@ -31,8 +31,8 @@
       "date": "Mar 2024 | Mar 2026",
       "type": "Full-time | Onsite",
       "location": "Vila Velha, ES, Brazil",
-      "description": "I was part of the mobile team, working with React Native and Expo to improve and scale our apps. My day-to-day included refactoring code, developing new features, and making sure everything ran smoothly and intuitively for users.",
-      "skills": "Expo, Git, React, Typescript"
+      "description": "- Developed and scaled React Native / Expo apps, refactoring legacy code and shipping new features with a focus on performance and UX.\n- Led state management migration from Redux to Zustand, adopting a leaner, more modern approach that reduced boilerplate and improved maintainability.\n- Maintained high coding standards through peer code reviews and consistent TypeScript usage.",
+      "skills": "Expo, React Native, Zustand, Typescript, Git"
     },
     "beebee": {
       "name": "BeeBee",
@@ -40,8 +40,8 @@
       "date": "Oct 2023 | Mar 2024",
       "type": "Full-time | Remote",
       "location": "Vitória, ES, Brazil",
-      "description": "I worked on both web and mobile platforms using React.js and Expo. I also led Proof of Concept initiatives with Flutter to test out new tools and improve our workflows.",
-      "skills": "Expo, Git, React, Tailwind, Typescript, Flutter"
+      "description": "- Built a real-time operations dashboard in React.js and TanStack Table for internal teams to monitor deliveries end to end, including request status, driver acceptance, SLA timing, and operational issues.\n- Implemented live delivery-status updates via Websockets with Pusher, allowing employees to track changes instantly without manual refresh.\n- Worked on a delivery flow where clients requested deliveries through the app and drivers accepted jobs on mobile, ensuring the dashboard accurately reflected each stage of the operation in real time.",
+      "skills": "React, TanStack Table, Websockets, Pusher, Typescript, Git"
     },
     "gmill": {
       "name": "Grupo GMill",
@@ -49,8 +49,8 @@
       "date": "Nov 2022 | Oct 2023",
       "type": "Full-time | Onsite",
       "location": "Serra, ES, Brazil",
-      "description": "I led the migration of a legacy Angular application to a modern React stack using TypeScript and Tailwind CSS. I also built a mobile app with Expo and React Native to enhance user experience and scalability.",
-      "skills": "Expo, Git, React, Tailwind, Typescript"
+      "description": "- Led the full migration of a legacy Angular application to a modern React + TypeScript + Tailwind CSS stack, improving performance and developer experience.\n- Built and refined responsive React + TypeScript interfaces during the migration, improving usability and maintainability across internal workflows.\n- Optimized applications for speed, maintainability, and responsive design across devices.",
+      "skills": "React, Typescript, Tailwind, Git"
     },
     "atw": {
       "name": "ATW Delivery Brands",
@@ -58,17 +58,17 @@
       "date": "Mar 2022 | Nov 2022",
       "type": "Intern | Onsite",
       "location": "Vitória, ES, Brazil",
-      "description": "As a backend intern, I developed APIs using Node.js and Express, implemented automated tests with Jest, and worked on database integration with Prisma. I also prototyped a real-time chat feature using Socket.io.",
-      "skills": "Next, Git, Node, React, Tailwind, Typescript"
+      "description": "- Developed REST APIs with Node.js and Express; integrated databases with Prisma ORM.\n- Prototyped a real-time chat feature using Socket.io — directly relevant to Websocket-based communication.\n- Wrote automated tests with Jest, reinforcing a culture of quality and testing best practices.",
+      "skills": "Node.js, Express, Prisma, Socket.io, Jest, Git"
     },
     "uvv": {
       "name": "UVV",
-      "role": "Backend Developer",
+      "role": "Backend / VR Developer",
       "date": "Sep 2021 | Mar 2022",
       "type": "Scholarship | Onsite",
       "location": "Vila Velha, ES, Brazil",
-      "description": "I developed a .NET API for a virtual reality research project and continued working in Unity. This role helped me grow in both backend development and game programming.",
-      "skills": "Node, Typescript"
+      "description": "- Built a .NET API for a virtual reality research project; developed UI prototypes in Unity with C#.",
+      "skills": ".NET, Unity, C#, Git"
     },
     "uvv-volunteer": {
       "name": "UVV",
