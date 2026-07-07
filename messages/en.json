@@ -22,8 +22,8 @@
       "date": "Mar 2026 | Present",
       "type": "Full-time | Hybrid",
       "location": "Brazil",
-      "description": "- Architected and built the company's mobile app from scratch using Expo and React Native, making key architecture decisions from day one.\n- Drove feature development across the full product lifecycle, coordinating closely with cross-functional teams.\n- Applied TypeScript throughout for type safety, maintainability, and scalability.",
-      "skills": "Expo, React Native, Typescript, Git"
+      "description": "- Work on the evolution of an education SaaS platform for exam preparation, connecting the mobile app, web dashboard, and backend into one integrated experience for students, teachers, and internal operations.\n- Build the mobile app with Expo, React Native, and TypeScript, covering authentication, navigation, push notifications, deep links, live classes with Zoom, and Android/iOS release stability improvements.\n- Also contribute to backend and infrastructure with NestJS, Supabase, BullMQ queues, Railway, and multi-tenant flows, handling migrations, permissions, deployments, async jobs, and critical product integrations.",
+      "skills": "Expo, React Native, TypeScript, NestJS, Supabase, Railway, BullMQ, Zoom SDK, Git"
     },
     "slabware": {
       "name": "Slabware",
