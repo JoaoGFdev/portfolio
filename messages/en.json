@@ -1,29 +1,36 @@
 {
   "Header": {
-    "description": "I'm a Front-End and Mobile Developer focused on building fast, well-designed, and user-friendly digital products. I work mainly with React, Next.js, React Native, and Expo, while also stepping into backend work when the product needs solid APIs, integrations, and infrastructure.",
-    "toggleTheme": "Toggle theme"
+    "description": "I'm a full-stack developer who builds products end to end: web and mobile interfaces, databases, integrations, infrastructure, and AI features in production. I work mainly with TypeScript, React, Next.js, React Native, Node.js, and Supabase, with a close eye on architecture, access security, cost, and quality. I also enjoy building small command-line tools that automate manual, repetitive processes, turning a tedious step-by-step into a single guided command.",
+    "toggleTheme": "Toggle theme",
+    "role": "Full-stack developer",
+    "location": "Vila Velha, ES, Brazil",
+    "toggleLocale": "Switch language to Portuguese",
+    "localeLabel": "Português"
   },
   "EducationSection": {
     "section": "Education",
     "title": "Bachelor's degree in Computer Science",
     "institution": "University of Vila Velha | UVV",
     "date": "Jan 2018 | Dec 2023",
-    "city": "Vila Velha, ES, Brazil"
+    "city": "Vila Velha, ES, Brazil",
+    "institutionShort": "UVV"
   },
   "Sections": {
     "experience": "Experience",
-    "education": "Education"
+    "education": "Education",
+    "projects": "Projects",
+    "skills": "Skills"
   },
   "WorkExperienceSection": {
     "section": "Experience",
     "acelera": {
       "name": "Acelera Concursos",
-      "role": "Mobile Developer",
+      "role": "Full-Stack Developer",
       "date": "Mar 2026 | Present",
       "type": "Full-time | Hybrid",
       "location": "Brazil",
-      "description": "- Work on the evolution of an education SaaS platform for exam preparation, connecting the mobile app, web dashboard, and backend into one integrated experience for students, teachers, and internal operations.\n- Build the mobile app with Expo, React Native, and TypeScript, covering authentication, navigation, push notifications, deep links, live classes with Zoom, and Android/iOS release stability improvements.\n- Also contribute to backend and infrastructure with NestJS, Supabase, BullMQ queues, Railway, and multi-tenant flows, handling migrations, permissions, deployments, async jobs, and critical product integrations.",
-      "skills": "Expo, React Native, TypeScript, NestJS, Supabase, Railway, BullMQ, Zoom SDK, Git"
+      "description": "- Build and maintain a study-schedule platform for exam preparation, a multi-tenant education SaaS with a web dashboard for students, teachers, and internal operations.\n- Built the students' AI tutor: streaming chat, search restricted to the content each student can access with source citations, image input with private storage, and atomic per-model token reservation to keep costs under control.\n- Created the chat's subscription plans, with daily limits, price caps, per-plan cost metrics, and a model catalog with change history, integrating two AI gateways (Vercel AI Gateway and OpenRouter).\n- Implemented per-school subdomains with central login, role-based permissions (RBAC) and tag-based content access, database security with RLS, user provisioning webhooks, and blocking of delinquent accounts.\n- Shipped features such as courses and schedules, mock exams with rankings and corrections, flashcards, mind maps with PDF export, and reports, plus the payment integration.\n- Maintain a self-hosted Plunk instance on AWS SES for transactional email and campaigns, handling configuration, sending quotas, bounces, and cost alerts.",
+      "skills": "TypeScript, Next.js, React, Supabase, PostgreSQL, Vercel AI SDK, Vercel, Cloudflare, Plunk, AWS SES, Docker, Git"
     },
     "slabware": {
       "name": "Slabware",
@@ -78,6 +85,47 @@
       "location": "Vila Velha, ES, Brazil",
       "description": "I joined a virtual reality project where I learned Unity with C#. I focused on UI prototyping and gained hands-on experience in game development and UX design.",
       "skills": "Unity, C#"
+    },
+    "transitions": {
+      "uvv": "I started in game development with Unity and moved into backend work."
     }
+  },
+  "Timeline": {
+    "caption": "Career from 2018 to today: each bar is a role or my degree. Select one to see the details.",
+    "now": "today",
+    "education": "Degree",
+    "transition": "Career change"
+  },
+  "ProjectsSection": {
+    "playlist": {
+      "name": "Playlist Bridge",
+      "description": "Web app that copies playlists between Spotify and YouTube. It surfaces music-video matches for review, creates private playlists, and resumes transfers interrupted by API quotas or dropped connections.",
+      "skills": "TanStack Start, Clerk, Drizzle, Cloudflare Workers, D1"
+    },
+    "automation": {
+      "name": "Automation tools",
+      "description": "I like building small terminal tools that simplify manual processes in my daily work, such as importing content, managing email campaign audiences, setting up development environments, and processing videos. Each one replaces a tedious, error-prone checklist with a single guided command.",
+      "skills": "Node.js, TypeScript, Python, Clack, Vitest"
+    }
+  },
+  "SkillsSection": {
+    "frontend": "Frontend",
+    "mobile": "Mobile",
+    "backend": "Backend and data",
+    "ai": "AI",
+    "infra": "Infrastructure"
+  },
+  "Footer": {
+    "cta": "Want to talk about a role or a project?",
+    "email": "Write to me@joaogf.dev"
+  },
+  "Metadata": {
+    "description": "João Guilherme Fonseca, full-stack developer: web, mobile, and AI products."
+  },
+  "Resume": {
+    "title": "Résumé",
+    "download": "Download résumé (PDF)",
+    "summary": "Summary",
+    "website": "joaogf.dev"
   }
 }
