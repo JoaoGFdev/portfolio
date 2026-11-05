@@ -2,36 +2,106 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Palette drawn from the Espírito Santo flag: blue and pink on white. */
+:root {
+  --paper: #f7f8fa;
+  --ink: #10162f;
+  --muted: #566078;
+  --rule: #dce0e8;
+  --blue: #2d5bd7;
+  --pink: #e5487f;
+}
+
+.dark {
+  --paper: #0c1226;
+  --ink: #e9ecf5;
+  --muted: #98a1b8;
+  --rule: #232b45;
+  --blue: #7c9bf7;
+  --pink: #f27aa5;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-blue: var(--blue);
+  --color-pink: var(--pink);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-geist-sans), sans-serif;
+}
+
 @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  :focus-visible {
+    outline: 2px solid var(--pink);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--blue) 25%, transparent);
+  }
+  [id] {
+    scroll-margin-top: 2rem;
+  }
+}
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+/* The one orchestrated moment: timeline bars draw in on load. */
+@keyframes bar-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+.timeline-bar {
+  transform-origin: left center;
+  animation: bar-draw 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: calc(var(--row) * 70ms + 150ms);
+}
 
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .timeline-bar {
+    animation: none;
+  }
+}
 
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+/* Résumé: always the light palette on white, A4 pages for the PDF. */
+.resume,
+.dark .resume {
+  --paper: #ffffff;
+  --ink: #10162f;
+  --muted: #566078;
+  --rule: #dce0e8;
+  --blue: #2d5bd7;
+  color-scheme: light;
+}
 
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+@page {
+  size: A4;
+  margin: 14mm 16mm;
+}
 
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-
-    --radius: 0.5rem;
+@media print {
+  body {
+    background: #ffffff;
   }
 }

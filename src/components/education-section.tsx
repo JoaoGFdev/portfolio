@@ -4,19 +4,22 @@ import { Section } from "./section"
 
 export async function EducationSection() {
   const t = await getTranslations("EducationSection")
+  const ts = await getTranslations("Sections")
 
   return (
-    <Section title={t("section")}>
-      <div className="flex flex-col gap-2 py-6 md:flex-row md:items-center md:justify-between">
-        <div>
-          <h3 className="text-xl font-semibold">{t("title")}</h3>
-          <p className="text-sm text-zinc-500">{t("institution")}</p>
-        </div>
-        <div className="space-y-1 text-sm text-zinc-500 md:text-right">
-          <p>{t("date")}</p>
-          <p>{t("city")}</p>
-        </div>
-      </div>
+    <Section id="education" title={ts("education")}>
+      <article className="pt-1">
+        <h3 className="text-xl font-semibold">
+          {t("title")}
+          <span className="block text-lg font-normal text-blue">
+            {t("institution")}
+          </span>
+        </h3>
+        <p className="mt-2 flex flex-wrap gap-x-5 text-sm text-muted">
+          <span>{t("date")}</span>
+          <span>{t("city")}</span>
+        </p>
+      </article>
     </Section>
   )
 }

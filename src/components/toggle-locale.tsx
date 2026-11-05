@@ -1,22 +1,23 @@
-import { getTranslations } from "next-intl/server"
+import { getLocale, getTranslations } from "next-intl/server"
 
-import { getLocale, toggleLocaleAction } from "~/utils/locale"
+import { Link } from "~/i18n/navigation"
 
 export async function ToggleLocale() {
   const t = await getTranslations("Header")
-  const locale = await getLocale()
+  const other = (await getLocale()) === "pt" ? "en" : "pt"
 
+  // A prefetched link to the other static page; next-intl also stores the
+  // choice in the NEXT_LOCALE cookie so "/" remembers it.
   return (
-    <form action={toggleLocaleAction}>
-      <button
-        type="submit"
-        className="flex gap-2 rounded-xl p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
-      >
-        <p className="size-6 text-zinc-600 dark:text-zinc-200">
-          {locale.toUpperCase()}
-        </p>
-        <span className="sr-only">{t("toggleTheme")}</span>
-      </button>
-    </form>
+    <Link
+      href="/"
+      locale={other}
+      hrefLang={other}
+      lang={other}
+      aria-label={t("toggleLocale")}
+      className="grid h-10 place-items-center rounded-md px-3 text-sm font-medium text-muted transition-colors hover:bg-rule/60 hover:text-ink"
+    >
+      {t("localeLabel")}
+    </Link>
   )
 }
